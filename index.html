@@ -1,306 +1,470 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanjida Yeasmin | Cybersecurity</title>
+<title>Sanjida | Cybersecurity Portfolio</title>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:#030605;
-  color:#eafff1;
-  font-family:"Courier New",monospace;
-  overflow-x:hidden;
+    background:#030609;
+    color:#e9ffff;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
 }
 
-/* Moving background */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(rgba(0,255,120,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,255,120,.035) 1px,transparent 1px);
-  background-size:45px 45px;
-  animation:gridMove 8s linear infinite;
+/* Animated Background */
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-3;
 }
 
-@keyframes gridMove{
-  from{background-position:0 0;}
-  to{background-position:45px 45px;}
+body:after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 30%,rgba(0,255,210,.12),transparent 30%),
+    radial-gradient(circle at 80% 70%,rgba(0,160,255,.10),transparent 30%);
+    pointer-events:none;
+    z-index:-2;
 }
 
+/* NAVBAR */
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:10;
-  padding:18px 8%;
-  display:flex;
-  justify-content:space-between;
-  background:rgba(3,6,5,.88);
-  border-bottom:1px solid #123d27;
-  backdrop-filter:blur(10px);
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(3,6,9,.65);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(0,255,210,.15);
+    z-index:1000;
 }
 
 .logo{
-  color:#00ff73;
-  font-weight:bold;
+    font-family:monospace;
+    font-size:22px;
+    color:#00ffd5;
+    text-shadow:0 0 15px #00ffd5;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
 }
 
 nav a{
-  color:#a9c7b4;
-  text-decoration:none;
-  margin-left:20px;
+    color:#b8d8da;
+    text-decoration:none;
+    transition:.3s;
 }
 
 nav a:hover{
-  color:#00ff73;
+    color:#00ffd5;
+    text-shadow:0 0 15px #00ffd5;
 }
 
-section{
-  max-width:1050px;
-  margin:auto;
-  padding:100px 25px;
-}
-
+/* HERO */
 .hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:100px 8%;
+    position:relative;
 }
 
-.terminal{
-  color:#00ff73;
-  margin-bottom:18px;
-  min-height:25px;
+.hero-content{
+    max-width:900px;
+    text-align:center;
 }
 
-.hero h1{
-  font-size:clamp(45px,8vw,82px);
-  line-height:1.05;
-}
-
-.green{
-  color:#00ff73;
-  text-shadow:0 0 20px rgba(0,255,115,.5);
-}
-
-.subtitle{
-  color:#91aa9b;
-  max-width:700px;
-  font-size:18px;
-  margin-top:20px;
-}
-
-.cursor{
-  animation:blink .8s infinite;
+.small{
+    color:#00ffd5;
+    font-family:monospace;
+    letter-spacing:4px;
+    margin-bottom:25px;
+    animation:blink 1.5s infinite;
 }
 
 @keyframes blink{
-  50%{opacity:0;}
+    50%{opacity:.35}
 }
 
-.buttons{
-  margin-top:30px;
+.hero h1{
+    font-size:clamp(55px,9vw,110px);
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#00ffd5;
+    text-shadow:
+    0 0 10px #00ffd5,
+    0 0 30px #00ffd5,
+    0 0 70px rgba(0,255,213,.5);
+}
+
+.typing{
+    font-size:25px;
+    color:#9dbfc3;
+    min-height:35px;
+    font-family:monospace;
+}
+
+.cursor{
+    color:#00ffd5;
+    animation:blink .7s infinite;
+}
+
+.hero p{
+    max-width:650px;
+    margin:30px auto;
+    color:#7f9da1;
+    line-height:1.8;
 }
 
 .btn{
-  display:inline-block;
-  padding:12px 20px;
-  margin-right:10px;
-  border:1px solid #00ff73;
-  border-radius:5px;
-  color:#00ff73;
-  text-decoration:none;
-  transition:.3s;
+    display:inline-block;
+    padding:14px 28px;
+    margin:8px;
+    border:1px solid #00ffd5;
+    border-radius:5px;
+    color:#00ffd5;
+    text-decoration:none;
+    font-family:monospace;
+    transition:.4s;
 }
 
 .btn:hover{
-  background:#00ff73;
-  color:#030605;
-  box-shadow:0 0 30px rgba(0,255,115,.5);
-  transform:translateY(-3px);
+    background:#00ffd5;
+    color:#030609;
+    box-shadow:
+    0 0 15px #00ffd5,
+    0 0 40px rgba(0,255,213,.5);
+    transform:translateY(-4px);
+}
+
+/* SCROLL INDICATOR */
+.scroll{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#527477;
+    font-family:monospace;
+    animation:updown 1.5s infinite;
+}
+
+@keyframes updown{
+    50%{transform:translate(-50%,10px)}
+}
+
+/* SECTIONS */
+section{
+    padding:110px 8%;
 }
 
 .title{
-  color:#00ff73;
-  font-size:30px;
-  margin-bottom:30px;
+    text-align:center;
+    font-size:45px;
+    margin-bottom:60px;
 }
 
-.title::before{
-  content:"./";
-  color:#527562;
+.title span{
+    color:#00ffd5;
+    text-shadow:0 0 20px rgba(0,255,213,.5);
+}
+
+/* ABOUT */
+.about-box{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    border:1px solid rgba(0,255,213,.2);
+    border-radius:15px;
+    background:rgba(5,12,16,.75);
+    box-shadow:0 0 40px rgba(0,255,213,.07);
+    transition:.5s;
+}
+
+.about-box:hover{
+    transform:translateY(-10px);
+    border-color:#00ffd5;
+    box-shadow:0 0 40px rgba(0,255,213,.18);
+}
+
+.terminal{
+    color:#8baeb0;
+    font-family:monospace;
+    line-height:2;
+}
+
+.green{
+    color:#00ffd5;
+}
+
+/* SKILLS */
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:22px;
 }
 
 .card{
-  background:rgba(7,17,11,.9);
-  border:1px solid #143c28;
-  border-radius:10px;
-  padding:25px;
-  margin-bottom:20px;
-  transition:.35s;
-  opacity:0;
-  transform:translateY(30px);
-  animation:appear .8s forwards;
+    padding:30px;
+    background:rgba(7,14,18,.8);
+    border:1px solid rgba(0,255,213,.16);
+    border-radius:14px;
+    text-align:center;
+    transition:.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:#00ffd5;
+    top:0;
+    left:-100%;
+    transition:.5s;
+}
+
+.card:hover:before{
+    left:0;
 }
 
 .card:hover{
-  border-color:#00ff73;
-  box-shadow:0 0 25px rgba(0,255,115,.12);
-  transform:translateY(-5px);
+    transform:translateY(-12px) scale(1.03);
+    border-color:#00ffd5;
+    box-shadow:0 0 30px rgba(0,255,213,.15);
 }
 
-@keyframes appear{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+.card .icon{
+    font-size:40px;
+    margin-bottom:15px;
 }
 
 .card h3{
-  color:#dffff0;
-  margin-bottom:10px;
+    color:#00ffd5;
+    margin-bottom:10px;
 }
 
 .card p{
-  color:#91aa9b;
+    color:#769397;
+    line-height:1.6;
 }
 
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
+/* EXPERIENCE */
+.timeline{
+    max-width:850px;
+    margin:auto;
+    position:relative;
 }
 
-.skill{
-  padding:10px 15px;
-  border:1px solid #195d39;
-  border-radius:5px;
-  color:#00ff73;
-  background:#07110b;
-  transition:.3s;
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:15px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:#00ffd5;
+    box-shadow:0 0 15px #00ffd5;
 }
 
-.skill:hover{
-  transform:scale(1.06);
-  box-shadow:0 0 18px rgba(0,255,115,.25);
-}
-
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:25px;
-  color:#8fb29d;
+.experience{
+    position:relative;
+    margin-bottom:35px;
+    padding-left:55px;
 }
 
 .dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#00ff73;
-  box-shadow:0 0 12px #00ff73;
-  animation:pulse 1.5s infinite;
+    position:absolute;
+    left:8px;
+    top:5px;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:#00ffd5;
+    box-shadow:0 0 20px #00ffd5;
 }
 
-@keyframes pulse{
-  50%{
-    opacity:.3;
-    transform:scale(.7);
-  }
+.experience-box{
+    padding:25px;
+    border:1px solid rgba(0,255,213,.18);
+    background:rgba(6,13,17,.8);
+    border-radius:12px;
+    transition:.4s;
 }
 
-.project-tag{
-  color:#00ff73;
-  font-size:13px;
-  margin-bottom:8px;
+.experience-box:hover{
+    transform:translateX(10px);
+    border-color:#00ffd5;
 }
 
+.experience-box h3{
+    color:#00ffd5;
+    margin-bottom:8px;
+}
+
+.experience-box span{
+    color:#607d80;
+    font-family:monospace;
+    font-size:14px;
+}
+
+.experience-box p{
+    margin-top:12px;
+    color:#8da8aa;
+    line-height:1.7;
+}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:25px;
+}
+
+.project{
+    padding:30px;
+    min-height:220px;
+    border:1px solid rgba(0,255,213,.18);
+    background:#060b0f;
+    border-radius:14px;
+    transition:.5s;
+}
+
+.project:hover{
+    transform:translateY(-12px);
+    border-color:#00ffd5;
+    box-shadow:0 0 35px rgba(0,255,213,.2);
+}
+
+.project h3{
+    color:#00ffd5;
+    margin-bottom:15px;
+}
+
+.project p{
+    color:#829b9e;
+    line-height:1.7;
+}
+
+/* CONTACT */
 .contact{
-  text-align:center;
-  border:1px solid #143c28;
-  border-radius:12px;
-  padding:45px 20px;
-  background:#07100b;
+    text-align:center;
+}
+
+.contact p{
+    color:#809b9e;
+    margin-bottom:30px;
 }
 
 footer{
-  text-align:center;
-  padding:30px;
-  color:#527562;
-  border-top:1px solid #123d27;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(0,255,213,.15);
+    color:#527174;
+    font-family:monospace;
 }
 
+/* MOBILE */
 @media(max-width:700px){
-  nav{
-    padding:15px 20px;
-  }
 
-  nav div:last-child{
-    display:none;
-  }
+    nav ul{
+        display:none;
+    }
 
-  section{
-    padding:85px 20px;
-  }
+    .hero h1{
+        font-size:60px;
+    }
 
-  .hero h1{
-    font-size:48px;
-  }
+    .typing{
+        font-size:18px;
+    }
+
+    section{
+        padding:80px 6%;
+    }
+
+    .title{
+        font-size:35px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">SANJIDA@SECURITY</div>
+<canvas id="matrix"></canvas>
 
-  <div>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">&lt;SANJIDA/&gt;</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 </nav>
 
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
 
-  <div class="terminal">
-    root@sanjida:~$ <span id="typing"></span><span class="cursor">_</span>
-  </div>
+    <div class="hero-content">
 
-  <h1>
-    SANJIDA<br>
-    <span class="green">YEASMIN</span>
-  </h1>
+        <div class="small">
+            [ SYSTEM INITIALIZING... ]
+        </div>
 
-  <p class="subtitle">
-    Cybersecurity Enthusiast • Python Learner • AI Explorer
-  </p>
+        <h1>
+            SANJIDA<br>
+            <span>YEASMIN</span>
+        </h1>
 
-  <div class="status">
-    <span class="dot"></span>
-    Currently learning cybersecurity & technology
-  </div>
+        <div class="typing">
+            <span id="typing"></span>
+            <span class="cursor">_</span>
+        </div>
 
-  <div class="buttons">
-    <a href="#projects" class="btn">View Projects</a>
-    <a href="https://github.com/vantax" class="btn">GitHub</a>
-  </div>
+        <p>
+            Cybersecurity learner exploring ethical hacking,
+            Python, AI and modern technology. Building skills,
+            solving problems and creating something meaningful.
+        </p>
+
+        <a href="#projects" class="btn">ENTER PORTFOLIO</a>
+        <a href="#contact" class="btn">CONNECT</a>
+
+    </div>
+
+    <div class="scroll">
+        ↓ SCROLL TO EXPLORE ↓
+    </div>
 
 </section>
 
@@ -308,25 +472,46 @@ footer{
 <!-- ABOUT -->
 <section id="about">
 
-  <h2 class="title">about</h2>
+    <h2 class="title">ABOUT <span>ME</span></h2>
 
-  <div class="card">
-    <h3>Who Am I?</h3>
+    <div class="about-box">
 
-    <p>
-      I am a technology-focused learner interested in
-      cybersecurity, programming, artificial intelligence
-      and modern technology.
-    </p>
+        <div class="terminal">
 
-    <br>
+            <p>
+                <span class="green">root@sanjida:~$</span>
+                whoami
+            </p>
 
-    <p>
-      I am continuously developing my technical skills
-      through self-learning, experimentation and practical
-      projects.
-    </p>
-  </div>
+            <p>
+                Cybersecurity Learner & Technology Explorer
+            </p>
+
+            <br>
+
+            <p>
+                <span class="green">root@sanjida:~$</span>
+                mission
+            </p>
+
+            <p>
+                Learn → Build → Experiment → Improve
+            </p>
+
+            <br>
+
+            <p>
+                <span class="green">root@sanjida:~$</span>
+                interests
+            </p>
+
+            <p>
+                Cybersecurity | AI | Python | Technology
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -334,22 +519,121 @@ footer{
 <!-- SKILLS -->
 <section id="skills">
 
-  <h2 class="title">skills</h2>
+    <h2 class="title">MY <span>SKILLS</span></h2>
 
-  <div class="skills">
+    <div class="skills">
 
-    <div class="skill">Cybersecurity</div>
-    <div class="skill">Python</div>
-    <div class="skill">Linux</div>
-    <div class="skill">Networking</div>
-    <div class="skill">AI & Automation</div>
-    <div class="skill">Git & GitHub</div>
-    <div class="skill">Programming</div>
-    <div class="skill">Problem Solving</div>
-    <div class="skill">Communication</div>
-    <div class="skill">Teamwork</div>
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h3>Cybersecurity</h3>
+            <p>Learning cybersecurity concepts, security and ethical hacking.</p>
+        </div>
 
-  </div>
+        <div class="card">
+            <div class="icon">🐍</div>
+            <h3>Python</h3>
+            <p>Programming fundamentals, problem solving and automation.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐧</div>
+            <h3>Linux</h3>
+            <p>Exploring Linux systems and command-line environments.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Networking</h3>
+            <p>Learning networks, protocols and security fundamentals.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>AI</h3>
+            <p>Developing skills in artificial intelligence and automation.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎬</div>
+            <h3>Video Editing</h3>
+            <p>Basic experience in video editing and creative content.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience">
+
+    <h2 class="title">MY <span>EXPERIENCE</span></h2>
+
+    <div class="timeline">
+
+        <div class="experience">
+
+            <div class="dot"></div>
+
+            <div class="experience-box">
+
+                <h3>Hospital Experience</h3>
+
+                <span>Previous Work Experience</span>
+
+                <p>
+                    Gained practical experience working in a
+                    hospital environment and developed
+                    communication and teamwork skills.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="experience">
+
+            <div class="dot"></div>
+
+            <div class="experience-box">
+
+                <h3>Bank Experience</h3>
+
+                <span>Previous Work Experience</span>
+
+                <p>
+                    Experienced a professional work environment
+                    while developing communication, responsibility
+                    and teamwork skills.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="experience">
+
+            <div class="dot"></div>
+
+            <div class="experience-box">
+
+                <h3>Cumilla Programming Olympiad</h3>
+
+                <span>2022</span>
+
+                <p>
+                    Selected for the Cumilla Programming Olympiad,
+                    developing an early interest in programming
+                    and problem solving.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -357,141 +641,196 @@ footer{
 <!-- PROJECTS -->
 <section id="projects">
 
-  <h2 class="title">projects</h2>
+    <h2 class="title">MY <span>PROJECTS</span></h2>
 
-  <div class="card">
+    <div class="projects">
 
-    <div class="project-tag">[ CYBERSECURITY ]</div>
+        <div class="project">
 
-    <h3>Cybersecurity Learning Lab</h3>
+            <h3>🛡 Cybersecurity Lab</h3>
 
-    <p>
-      Exploring cybersecurity concepts, Linux, networking
-      and ethical security practices through hands-on learning.
-    </p>
+            <p>
+                Personal learning projects focused on cybersecurity,
+                Linux, networking and security fundamentals.
+            </p>
 
-  </div>
-
-
-  <div class="card">
-
-    <div class="project-tag">[ PYTHON ]</div>
-
-    <h3>Python Projects</h3>
-
-    <p>
-      Building Python projects to improve programming,
-      automation and problem-solving skills.
-    </p>
-
-  </div>
+        </div>
 
 
-  <div class="card">
+        <div class="project">
 
-    <div class="project-tag">[ AI ]</div>
+            <h3>🐍 Python Projects</h3>
 
-    <h3>AI & Automation Exploration</h3>
+            <p>
+                Small Python projects created while learning
+                programming and automation.
+            </p>
 
-    <p>
-      Exploring AI technologies and automation while
-      learning how they can be applied to practical problems.
-    </p>
-
-  </div>
-
-</section>
+        </div>
 
 
-<!-- EDUCATION -->
-<section>
+        <div class="project">
 
-  <h2 class="title">education</h2>
+            <h3>🤖 AI Automation</h3>
 
-  <div class="card">
+            <p>
+                Exploring AI-powered automation and experimenting
+                with practical technology ideas.
+            </p>
 
-    <h3>HSC — 2025</h3>
+        </div>
 
-    <p>Cumilla Government Women's College</p>
-
-  </div>
-
-</section>
-
-
-
-    <h3>Achievement</h3>
-
-    <p>
-      Selected in Cumilla Robotics and Programming Olympiad 2022.
-    </p>
-
-  </div>
+    </div>
 
 </section>
 
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="contact">
 
-  <h2 class="title">contact</h2>
+    <h2 class="title">LET'S <span>CONNECT</span></h2>
 
-  <div class="contact">
-
-    <h3>Let's Connect</h3>
-
-    <p style="color:#91aa9b;margin:15px 0 25px;">
-      Interested in technology, cybersecurity and collaboration?
+    <p>
+        Technology • Cybersecurity • AI • Learning
     </p>
 
-    <a href="https://github.com/vantax" class="btn">
-      GitHub
+    <a href="mailto:your@email.com" class="btn">
+        SEND MESSAGE
     </a>
-
-    <a href="mailto:YOUR-EMAIL@gmail.com" class="btn">
-      Email
-    </a>
-
-  </div>
 
 </section>
 
 
 <footer>
-
-  root@sanjida:~$ exit
-
-  <br><br>
-
-  © 2026 Sanjida Yeasmin
-
+    © 2026 SANJIDA YEASMIN — CYBERSECURITY PORTFOLIO
 </footer>
 
 
 <script>
 
-const text = "whoami";
-const typing = document.getElementById("typing");
+/* =========================
+   TYPING ANIMATION
+========================= */
 
-let i = 0;
+const words = [
+    "CYBERSECURITY LEARNER",
+    "ETHICAL HACKING ENTHUSIAST",
+    "PYTHON LEARNER",
+    "AI EXPLORER",
+    "TECHNOLOGY ENTHUSIAST"
+];
 
-function typeText(){
+let word = 0;
+let letter = 0;
+let deleting = false;
 
-  if(i < text.length){
+function typing(){
 
-    typing.textContent += text.charAt(i);
+    const display = document.getElementById("typing");
+    const current = words[word];
 
-    i++;
+    if(!deleting){
 
-    setTimeout(typeText,120);
+        display.textContent =
+        current.substring(0,letter++);
 
-  }
+        if(letter > current.length){
 
+            deleting = true;
+
+            setTimeout(typing,1200);
+            return;
+        }
+
+    }else{
+
+        display.textContent =
+        current.substring(0,letter--);
+
+        if(letter < 0){
+
+            deleting = false;
+            word = (word + 1) % words.length;
+        }
+    }
+
+    setTimeout(typing,deleting ? 45 : 90);
 }
 
-typeText();
+typing();
+
+
+/* =========================
+   MATRIX BACKGROUND
+========================= */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars =
+"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>";
+
+const fontSize = 14;
+
+let columns =
+Math.floor(canvas.width / fontSize);
+
+let drops =
+Array(columns).fill(1);
+
+function matrix(){
+
+    ctx.fillStyle = "rgba(3,6,9,.08)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.font = fontSize + "px monospace";
+
+    for(let i=0;i<drops.length;i++){
+
+        const char =
+        chars[Math.floor(Math.random()*chars.length)];
+
+        ctx.fillStyle = "#00ffd5";
+
+        ctx.fillText(
+            char,
+            i*fontSize,
+            drops[i]*fontSize
+        );
+
+        if(
+            drops[i]*fontSize > canvas.height &&
+            Math.random() > .975
+        ){
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(matrix,45);
+
+
+/* Resize */
+
+window.addEventListener("resize",()=>{
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    columns =
+    Math.floor(canvas.width / fontSize);
+
+    drops =
+    Array(columns).fill(1);
+});
 
 </script>
 
 </body>
 </html>
+```
