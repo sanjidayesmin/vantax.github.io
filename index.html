@@ -4,8 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SANJIDA // CYBER SYSTEM</title>
+<title>SANJIDA // CYBER ID</title>
 
 <style>
 *{
@@ -19,15 +18,15 @@ html{
 }
 
 body{
-    background:#020504;
-    color:#d7ffe8;
+    background:#020403;
+    color:#d8ffe7;
     font-family:"Courier New",monospace;
     overflow-x:hidden;
 }
 
-/* MATRIX BACKGROUND */
+/* MATRIX */
 
-canvas{
+#matrix{
     position:fixed;
     inset:0;
     z-index:-5;
@@ -36,17 +35,17 @@ canvas{
 
 /* SCANLINES */
 
-body:before{
+body::after{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
-    z-index:20;
+    z-index:50;
     background:repeating-linear-gradient(
-        to bottom,
+        0deg,
         transparent 0px,
         transparent 3px,
-        rgba(0,255,120,.025) 4px
+        rgba(0,255,100,.025) 4px
     );
 }
 
@@ -55,15 +54,16 @@ body:before{
 nav{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
     padding:18px 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(0,5,3,.82);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(0,255,120,.18);
-    z-index:10;
+    background:rgba(0,4,2,.78);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(0,255,100,.2);
+    z-index:20;
 }
 
 .logo{
@@ -74,7 +74,7 @@ nav{
 }
 
 nav a{
-    color:#8ba596;
+    color:#799383;
     text-decoration:none;
     margin-left:25px;
     transition:.3s;
@@ -82,7 +82,7 @@ nav a{
 
 nav a:hover{
     color:#00ff73;
-    text-shadow:0 0 12px #00ff73;
+    text-shadow:0 0 15px #00ff73;
 }
 
 /* HERO */
@@ -90,136 +90,138 @@ nav a:hover{
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
-    padding:100px 20px 50px;
+    align-items:center;
+    padding:100px 20px 40px;
 }
 
-.interface{
+.hacker-window{
     width:min(1000px,100%);
-    border:1px solid rgba(0,255,120,.3);
-    background:rgba(0,10,6,.72);
+    background:rgba(0,10,5,.75);
+    border:1px solid rgba(0,255,100,.35);
     box-shadow:
-        0 0 40px rgba(0,255,120,.08),
-        inset 0 0 50px rgba(0,255,120,.025);
+        0 0 50px rgba(0,255,100,.08),
+        inset 0 0 50px rgba(0,255,100,.03);
     position:relative;
     overflow:hidden;
 }
 
-.interface:after{
+.hacker-window::before{
     content:"";
     position:absolute;
+    left:0;
     width:100%;
     height:2px;
     background:#00ff73;
     box-shadow:0 0 20px #00ff73;
-    top:-2px;
-    animation:scan 4s linear infinite;
+    animation:scanner 4s linear infinite;
 }
 
-@keyframes scan{
-    0%{top:-2px}
-    100%{top:100%}
+@keyframes scanner{
+    from{top:-2px}
+    to{top:100%}
 }
 
-.topbar{
+.window-top{
     padding:12px 18px;
-    border-bottom:1px solid rgba(0,255,120,.15);
-    color:#60786a;
+    border-bottom:1px solid rgba(0,255,100,.15);
+    color:#5d7566;
     font-size:13px;
 }
 
-.topbar span{
+.window-top span{
     color:#00ff73;
 }
 
-.main{
-    padding:70px 45px;
+.hero-content{
+    padding:65px 40px;
     text-align:center;
 }
 
-.status{
+.boot{
     color:#00ff73;
     letter-spacing:4px;
     font-size:13px;
     margin-bottom:25px;
-    animation:pulse 1.5s infinite;
+    animation:blink 1.2s infinite;
 }
 
-@keyframes pulse{
-    50%{opacity:.35}
+@keyframes blink{
+    50%{opacity:.3}
 }
 
-/* GLITCH NAME */
+/* GLITCH */
 
 .glitch{
-    font-size:clamp(48px,9vw,100px);
-    font-weight:bold;
-    color:#fff;
     position:relative;
+    display:inline-block;
+    color:#fff;
+    font-size:clamp(50px,9vw,100px);
+    font-weight:bold;
     text-shadow:
         0 0 8px #00ff73,
-        0 0 30px rgba(0,255,120,.35);
-    animation:glitch 2s infinite;
+        0 0 30px rgba(0,255,100,.4);
+    animation:glitch 2.5s infinite;
 }
 
 @keyframes glitch{
     0%,88%,100%{
         transform:none;
     }
+
     90%{
-        transform:skewX(8deg);
+        transform:skewX(10deg);
     }
+
     92%{
-        transform:translateX(-7px);
+        transform:translateX(-8px);
     }
+
     94%{
-        transform:translateX(7px);
+        transform:translateX(8px);
     }
 }
 
-/* TYPING */
-
 .typing{
-    margin:20px 0;
     color:#00ff73;
     font-size:20px;
+    margin:20px 0;
     min-height:30px;
 }
 
 .cursor{
-    animation:blink .6s infinite;
+    animation:cursor .6s infinite;
 }
 
-@keyframes blink{
+@keyframes cursor{
     50%{opacity:0}
 }
 
-.description{
+.hero-text{
     max-width:650px;
     margin:auto;
-    color:#829589;
+    color:#82968a;
     line-height:1.8;
 }
 
 .buttons{
-    margin-top:35px;
+    margin-top:30px;
 }
 
 .btn{
     display:inline-block;
     padding:13px 25px;
     margin:7px;
+    border:1px solid #00ff73;
     color:#00ff73;
     text-decoration:none;
-    border:1px solid #00ff73;
     transition:.3s;
 }
 
 .btn:hover{
-    color:#000;
     background:#00ff73;
-    box-shadow:0 0 30px rgba(0,255,120,.6);
+    color:#000;
+    box-shadow:0 0 30px rgba(0,255,100,.6);
 }
 
 /* SECTIONS */
@@ -231,7 +233,7 @@ section{
 .title{
     color:white;
     font-size:32px;
-    margin-bottom:45px;
+    margin-bottom:40px;
 }
 
 .title span{
@@ -242,11 +244,11 @@ section{
 
 .terminal{
     background:#010302;
-    border:1px solid rgba(0,255,120,.25);
-    padding:28px;
+    border:1px solid rgba(0,255,100,.25);
+    padding:30px;
     line-height:2;
-    color:#8da99a;
-    box-shadow:inset 0 0 35px rgba(0,255,120,.035);
+    color:#8ca99a;
+    box-shadow:inset 0 0 40px rgba(0,255,100,.03);
 }
 
 .green{
@@ -255,25 +257,27 @@ section{
 
 /* ROBOTICS */
 
-.robot-card{
+.robotics{
     padding:40px;
-    border:1px solid rgba(0,255,120,.3);
+    border:1px solid rgba(0,255,100,.3);
     background:
-        radial-gradient(circle at 80% 20%,
-        rgba(0,255,120,.08),
-        transparent 30%),
-        rgba(0,10,6,.7);
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(0,255,100,.09),
+            transparent 30%
+        ),
+        rgba(0,10,5,.75);
     transition:.4s;
 }
 
-.robot-card:hover{
+.robotics:hover{
     transform:translateY(-8px);
-    box-shadow:0 0 35px rgba(0,255,120,.12);
     border-color:#00ff73;
+    box-shadow:0 0 35px rgba(0,255,100,.15);
 }
 
 .robot{
-    font-size:65px;
+    font-size:70px;
     display:inline-block;
     animation:robot 2.5s ease-in-out infinite;
 }
@@ -282,76 +286,59 @@ section{
     0%,100%{
         transform:translateY(0) rotate(0);
     }
+
     50%{
-        transform:translateY(-10px) rotate(3deg);
+        transform:translateY(-12px) rotate(4deg);
     }
 }
 
-.robot-card h3{
+.robotics h3{
     color:#00ff73;
     margin:20px 0 12px;
     font-size:25px;
 }
 
-/* LANGUAGE GRID */
+/* LANGUAGES */
 
 .languages{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(170px,1fr));
     gap:18px;
 }
 
 .language{
     padding:24px;
-    border:1px solid rgba(0,255,120,.2);
-    background:rgba(0,12,7,.7);
+    border:1px solid rgba(0,255,100,.2);
+    background:rgba(0,10,5,.7);
+    transition:.35s;
     position:relative;
     overflow:hidden;
-    transition:.35s;
 }
 
 .language:hover{
-    transform:translateY(-7px);
+    transform:translateY(-8px);
     border-color:#00ff73;
-    box-shadow:0 0 25px rgba(0,255,120,.13);
+    box-shadow:0 0 25px rgba(0,255,100,.15);
 }
 
-.language:before{
-    content:"";
-    position:absolute;
-    left:-100%;
-    top:0;
-    width:100%;
-    height:1px;
-    background:#00ff73;
-    animation:line 3s linear infinite;
-}
-
-@keyframes line{
-    0%{left:-100%}
-    100%{left:100%}
-}
-
-.language b{
-    display:block;
+.language h3{
     color:#00ff73;
-    font-size:20px;
-    margin-bottom:12px;
+    margin-bottom:15px;
 }
 
-.bar{
+.progress{
     height:4px;
     background:#102017;
-    overflow:hidden;
 }
 
-.bar span{
+.progress span{
     display:block;
     height:100%;
-    width:85%;
+    width:80%;
     background:#00ff73;
-    box-shadow:0 0 10px #00ff73;
-    animation:load 2s ease;
+    box-shadow:0 0 12px #00ff73;
+    animation:load 1.8s ease;
 }
 
 @keyframes load{
@@ -362,30 +349,37 @@ section{
 
 .skills{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
 }
 
-.skill{
-    padding:28px;
-    border:1px solid rgba(0,255,120,.18);
-    background:rgba(0,10,6,.65);
-    transition:.3s;
+.card{
+    padding:30px;
+    background:rgba(0,10,5,.7);
+    border:1px solid rgba(0,255,100,.18);
+    transition:.35s;
 }
 
-.skill:hover{
+.card:hover{
+    transform:translateY(-8px);
     border-color:#00ff73;
-    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(0,255,100,.12);
 }
 
-.skill-icon{
-    font-size:32px;
+.card-icon{
+    font-size:35px;
     margin-bottom:15px;
 }
 
-.skill h3{
+.card h3{
     color:#00ff73;
     margin-bottom:10px;
+}
+
+.card p{
+    color:#819488;
+    line-height:1.7;
 }
 
 /* CONTACT */
@@ -398,17 +392,17 @@ section{
     max-width:700px;
     margin:auto;
     padding:40px;
-    border:1px solid rgba(0,255,120,.25);
-    background:rgba(0,10,6,.65);
+    border:1px solid rgba(0,255,100,.25);
+    background:rgba(0,10,5,.7);
 }
 
 /* FOOTER */
 
 footer{
-    text-align:center;
     padding:30px;
-    color:#4d6055;
-    border-top:1px solid rgba(0,255,120,.12);
+    text-align:center;
+    color:#4c6254;
+    border-top:1px solid rgba(0,255,100,.12);
 }
 
 /* REVEAL */
@@ -421,7 +415,7 @@ footer{
 
 .reveal.show{
     opacity:1;
-    transform:none;
+    transform:translateY(0);
 }
 
 @media(max-width:700px){
@@ -430,7 +424,7 @@ footer{
         display:none;
     }
 
-    .main{
+    .hero-content{
         padding:55px 20px;
     }
 
@@ -445,15 +439,21 @@ footer{
 
 <canvas id="matrix"></canvas>
 
+<!-- NAV -->
+
 <nav>
-    <div class="logo">SANJIDA.exe</div>
+
+    <div class="logo">
+        SANJIDA.exe
+    </div>
 
     <div>
         <a href="#about">ABOUT</a>
-        <a href="#languages">CODE</a>
         <a href="#robotics">ROBOTICS</a>
+        <a href="#code">CODE</a>
         <a href="#contact">CONTACT</a>
     </div>
+
 </nav>
 
 
@@ -461,20 +461,21 @@ footer{
 
 <section class="hero">
 
-<div class="interface">
+<div class="hacker-window">
 
-    <div class="topbar">
-        <span>●</span> SECURE CONNECTION
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        SYSTEM: ONLINE
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        ACCESS: GRANTED
+    <div class="window-top">
+        <span>●</span>
+        SECURE TERMINAL
+        &nbsp; | &nbsp;
+        CONNECTION ENCRYPTED
+        &nbsp; | &nbsp;
+        ACCESS GRANTED
     </div>
 
-    <div class="main">
+    <div class="hero-content">
 
-        <div class="status">
-            [ INITIALIZING DIGITAL IDENTITY... ]
+        <div class="boot">
+            [ SYSTEM BOOTING... ]
         </div>
 
         <div class="glitch">
@@ -482,18 +483,27 @@ footer{
         </div>
 
         <div class="typing">
-            <span id="typing"></span><span class="cursor">_</span>
+            <span id="typing"></span>
+            <span class="cursor">_</span>
         </div>
 
-        <p class="description">
-            Cybersecurity • Programming • Robotics • AI
+        <p class="hero-text">
+            Cybersecurity • Robotics • Programming • AI
             <br>
-            Exploring technology. Building skills. Creating the future.
+            Exploring technology and building the future,
+            one line of code at a time.
         </p>
 
         <div class="buttons">
-            <a class="btn" href="#about">ENTER SYSTEM</a>
-            <a class="btn" href="#languages">VIEW CODE</a>
+
+            <a class="btn" href="#about">
+                ENTER SYSTEM
+            </a>
+
+            <a class="btn" href="#code">
+                VIEW CODE
+            </a>
+
         </div>
 
     </div>
@@ -508,22 +518,30 @@ footer{
 <section id="about" class="reveal">
 
 <h2 class="title">
-    <span>01 //</span> SYSTEM PROFILE
+    <span>01 //</span> DIGITAL IDENTITY
 </h2>
 
 <div class="terminal">
 
-<span class="green">root@sanjida:~$</span> whoami<br>
-> Sanjida Yeasmin Anmona<br><br>
+    <span class="green">root@sanjida:~$</span> whoami
+    <br>
+    > Sanjida Yeasmin Anmona
+    <br><br>
 
-<span class="green">root@sanjida:~$</span> interests<br>
-> Cybersecurity<br>
-> Programming<br>
-> Robotics<br>
-> Artificial Intelligence<br><br>
+    <span class="green">root@sanjida:~$</span> interests
+    <br>
+    > Cybersecurity
+    <br>
+    > Programming
+    <br>
+    > Robotics
+    <br>
+    > Artificial Intelligence
+    <br><br>
 
-<span class="green">root@sanjida:~$</span> status<br>
-> <span class="green">LEARNING • BUILDING • EXPLORING</span>
+    <span class="green">root@sanjida:~$</span> status
+    <br>
+    > <span class="green">ONLINE // LEARNING // BUILDING</span>
 
 </div>
 
@@ -538,15 +556,20 @@ footer{
     <span>02 //</span> ROBOTICS
 </h2>
 
-<div class="robot-card">
+<div class="robotics">
 
-    <div class="robot">🤖</div>
+    <div class="robot">
+        🤖
+    </div>
 
-    <h3>Cumilla Robotics and Programming</h3>
+    <h3>
+        Cumilla Robotics and Programming
+    </h3>
 
     <p>
-        Exploring robotics and programming through technology,
-        experimentation, creativity and problem solving.
+        Exploring robotics and programming through
+        technology, creativity, experimentation
+        and problem solving.
     </p>
 
 </div>
@@ -554,9 +577,9 @@ footer{
 </section>
 
 
-<!-- LANGUAGES -->
+<!-- PROGRAMMING -->
 
-<section id="languages" class="reveal">
+<section id="code" class="reveal">
 
 <h2 class="title">
     <span>03 //</span> PROGRAMMING STACK
@@ -565,53 +588,73 @@ footer{
 <div class="languages">
 
     <div class="language">
-        <b>Python</b>
-        <div class="bar"><span style="width:88%"></span></div>
+        <h3>Python</h3>
+        <div class="progress">
+            <span style="width:88%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>C</b>
-        <div class="bar"><span style="width:75%"></span></div>
+        <h3>C</h3>
+        <div class="progress">
+            <span style="width:75%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>C++</b>
-        <div class="bar"><span style="width:78%"></span></div>
+        <h3>C++</h3>
+        <div class="progress">
+            <span style="width:78%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>Java</b>
-        <div class="bar"><span style="width:65%"></span></div>
+        <h3>Java</h3>
+        <div class="progress">
+            <span style="width:65%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>JavaScript</b>
-        <div class="bar"><span style="width:72%"></span></div>
+        <h3>JavaScript</h3>
+        <div class="progress">
+            <span style="width:72%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>HTML</b>
-        <div class="bar"><span style="width:92%"></span></div>
+        <h3>HTML</h3>
+        <div class="progress">
+            <span style="width:92%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>CSS</b>
-        <div class="bar"><span style="width:86%"></span></div>
+        <h3>CSS</h3>
+        <div class="progress">
+            <span style="width:86%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>SQL</b>
-        <div class="bar"><span style="width:60%"></span></div>
+        <h3>SQL</h3>
+        <div class="progress">
+            <span style="width:60%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>Bash</b>
-        <div class="bar"><span style="width:70%"></span></div>
+        <h3>Bash</h3>
+        <div class="progress">
+            <span style="width:70%"></span>
+        </div>
     </div>
 
     <div class="language">
-        <b>Linux</b>
-        <div class="bar"><span style="width:74%"></span></div>
+        <h3>Linux</h3>
+        <div class="progress">
+            <span style="width:74%"></span>
+        </div>
     </div>
 
 </div>
@@ -619,7 +662,7 @@ footer{
 </section>
 
 
-<!-- SKILLS -->
+<!-- TECH -->
 
 <section class="reveal">
 
@@ -629,28 +672,79 @@ footer{
 
 <div class="skills">
 
-    <div class="skill">
-        <div class="skill-icon">🔐</div>
-        <h3>Cybersecurity</h3>
-        <p>Ethical hacking, Linux, networking and security fundamentals.</p>
+    <div class="card">
+
+        <div class="card-icon">
+            🔐
+        </div>
+
+        <h3>
+            Cybersecurity
+        </h3>
+
+        <p>
+            Exploring ethical hacking,
+            networking, Linux and
+            security fundamentals.
+        </p>
+
     </div>
 
-    <div class="skill">
-        <div class="skill-icon">🤖</div>
-        <h3>Robotics</h3>
-        <p>Programming, automation, sensors and intelligent machines.</p>
+
+    <div class="card">
+
+        <div class="card-icon">
+            🤖
+        </div>
+
+        <h3>
+            Robotics
+        </h3>
+
+        <p>
+            Exploring robots,
+            programming, automation
+            and intelligent machines.
+        </p>
+
     </div>
 
-    <div class="skill">
-        <div class="skill-icon">🧠</div>
-        <h3>AI</h3>
-        <p>Exploring artificial intelligence and automation technologies.</p>
+
+    <div class="card">
+
+        <div class="card-icon">
+            🧠
+        </div>
+
+        <h3>
+            Artificial Intelligence
+        </h3>
+
+        <p>
+            Exploring AI,
+            automation and
+            emerging technologies.
+        </p>
+
     </div>
 
-    <div class="skill">
-        <div class="skill-icon">💻</div>
-        <h3>Programming</h3>
-        <p>Learning languages and building practical projects.</p>
+
+    <div class="card">
+
+        <div class="card-icon">
+            💻
+        </div>
+
+        <h3>
+            Programming
+        </h3>
+
+        <p>
+            Learning programming
+            and creating practical
+            technology projects.
+        </p>
+
     </div>
 
 </div>
@@ -663,20 +757,24 @@ footer{
 <section id="contact" class="contact reveal">
 
 <h2 class="title">
-    <span>05 //</span> CONNECT
+    <span>05 //</span> CONNECTION
 </h2>
 
 <div class="contact-box">
 
     <p>
-        Interested in technology, communication,
-        teamwork and learning new skills.
+        Interested in technology,
+        communication, teamwork
+        and learning new skills.
     </p>
 
     <div class="buttons">
-        <a class="btn" href="mailto:your-email@example.com">
+
+        <a class="btn"
+           href="mailto:your-email@example.com">
             SEND MESSAGE
         </a>
+
     </div>
 
 </div>
@@ -685,13 +783,13 @@ footer{
 
 
 <footer>
-    SANJIDA // DIGITAL IDENTITY // 2026
+    SANJIDA // CYBER ID // 2026
 </footer>
 
 
 <script>
 
-/* TYPING EFFECT */
+/* TYPING */
 
 const words = [
     "CYBERSECURITY EXPLORER",
@@ -701,71 +799,83 @@ const words = [
     "FUTURE DIGITAL BUILDER"
 ];
 
-let word = 0;
-let letter = 0;
+let wordIndex = 0;
+let charIndex = 0;
 let deleting = false;
 
-function typing(){
+function type(){
 
-    const element = document.getElementById("typing");
-    const current = words[word];
+    const target =
+        document.getElementById("typing");
+
+    const current =
+        words[wordIndex];
 
     if(!deleting){
 
-        element.textContent =
-            current.substring(0,letter++);
+        target.textContent =
+            current.substring(0,charIndex++);
 
-        if(letter > current.length){
+        if(charIndex > current.length){
 
             deleting = true;
 
-            setTimeout(typing,1200);
+            setTimeout(type,1200);
+
             return;
         }
 
     }else{
 
-        element.textContent =
-            current.substring(0,letter--);
+        target.textContent =
+            current.substring(0,charIndex--);
 
-        if(letter < 0){
+        if(charIndex < 0){
 
             deleting = false;
-            word = (word + 1) % words.length;
-            letter = 0;
+
+            wordIndex =
+                (wordIndex + 1) % words.length;
+
+            charIndex = 0;
         }
     }
 
     setTimeout(
-        typing,
-        deleting ? 40 : 75
+        type,
+        deleting ? 35 : 75
     );
 }
 
-typing();
+type();
 
 
-/* SCROLL ANIMATION */
+/* SCROLL REVEAL */
 
 const observer =
-new IntersectionObserver((entries)=>{
+new IntersectionObserver(
+    entries => {
 
-    entries.forEach(entry=>{
+        entries.forEach(entry => {
 
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+            }
 
-    });
+        });
 
-},{threshold:.15});
+    },
+    {threshold:.15}
+);
 
 document
 .querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+.forEach(el =>
+    observer.observe(el)
+);
 
 
-/* MATRIX EFFECT */
+/* MATRIX */
 
 const canvas =
 document.getElementById("matrix");
@@ -773,27 +883,35 @@ document.getElementById("matrix");
 const ctx =
 canvas.getContext("2d");
 
-canvas.width =
-window.innerWidth;
-
-canvas.height =
-window.innerHeight;
-
-const letters =
+const characters =
 "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%<>/{}[]";
 
-const fontSize = 14;
+const size = 14;
 
-let columns =
-Math.floor(canvas.width/fontSize);
+let columns;
+let drops;
 
-let drops =
-Array(columns).fill(1);
+function setupMatrix(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+    columns =
+        Math.floor(canvas.width / size);
+
+    drops =
+        Array(columns).fill(1);
+}
+
+setupMatrix();
 
 function matrix(){
 
     ctx.fillStyle =
-    "rgba(0,5,3,.08)";
+        "rgba(0,4,2,.08)";
 
     ctx.fillRect(
         0,
@@ -803,30 +921,33 @@ function matrix(){
     );
 
     ctx.fillStyle =
-    "#00ff73";
+        "#00ff73";
 
     ctx.font =
-    fontSize+"px monospace";
+        size + "px monospace";
 
     for(let i=0;i<drops.length;i++){
 
-        const text =
-        letters[Math.floor(
-            Math.random()*letters.length
-        )];
+        const char =
+            characters[
+                Math.floor(
+                    Math.random() *
+                    characters.length
+                )
+            ];
 
         ctx.fillText(
-            text,
-            i*fontSize,
-            drops[i]*fontSize
+            char,
+            i * size,
+            drops[i] * size
         );
 
         if(
-            drops[i]*fontSize >
+            drops[i] * size >
             canvas.height &&
-            Math.random()>.975
+            Math.random() > .975
         ){
-            drops[i]=0;
+            drops[i] = 0;
         }
 
         drops[i]++;
@@ -835,21 +956,10 @@ function matrix(){
 
 setInterval(matrix,45);
 
-window.addEventListener("resize",()=>{
-
-    canvas.width =
-    window.innerWidth;
-
-    canvas.height =
-    window.innerHeight;
-
-    columns =
-    Math.floor(canvas.width/fontSize);
-
-    drops =
-    Array(columns).fill(1);
-
-});
+window.addEventListener(
+    "resize",
+    setupMatrix
+);
 
 </script>
 
