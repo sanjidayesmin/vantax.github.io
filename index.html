@@ -1,968 +1,326 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SANJIDA // CYBER ID</title>
+/* ===== HACKER MODE UI ===== */
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+  --green:#00ff66;
+  --lime:#7cff00;
+  --emerald:#00c853;
+  --darkgreen:#063b24;
+  --black:#020605;
+  --soft:#0aff9d;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
+/* Hacker Background */
 body{
-    background:#020403;
-    color:#d8ffe7;
-    font-family:"Courier New",monospace;
-    overflow-x:hidden;
+  background:
+    linear-gradient(
+      rgba(0,8,5,.88),
+      rgba(0,15,9,.92)
+    ),
+    url("hacker-bg.jpg") center/cover fixed no-repeat !important;
+
+  color:#d8ffe8;
+  font-family:monospace;
 }
 
-/* MATRIX */
+/* Moving scan lines */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
 
-#matrix{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    opacity:.18;
+  background:repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,255,100,.035) 4px
+  );
+
+  animation:scan 7s linear infinite;
 }
 
-/* SCANLINES */
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:50;
-    background:repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,255,100,.025) 4px
-    );
+@keyframes scan{
+  from{transform:translateY(-20px)}
+  to{transform:translateY(20px)}
 }
 
-/* NAV */
+
+/* ===== ALL BOXES ===== */
+
+section,
+.card,
+.project,
+.skill,
+.box,
+.about-box,
+.contact-box{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,35,20,.88),
+      rgba(0,10,7,.94)
+    ) !important;
+
+  border:2px solid var(--green) !important;
+  border-radius:4px !important;
+
+  box-shadow:
+    0 0 8px rgba(0,255,102,.35),
+    inset 0 0 20px rgba(0,255,102,.05) !important;
+
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+
+/* Moving line inside boxes */
+section::after,
+.card::after,
+.project::after,
+.skill::after,
+.box::after{
+  content:"";
+  position:absolute;
+  left:-100%;
+  top:0;
+  width:100%;
+  height:2px;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--lime),
+    transparent
+  );
+
+  animation:boxScan 4s linear infinite;
+}
+
+@keyframes boxScan{
+  0%{left:-100%}
+  100%{left:100%}
+}
+
+
+/* Hover */
+section:hover,
+.card:hover,
+.project:hover,
+.skill:hover,
+.box:hover{
+  transform:translateY(-5px);
+
+  border-color:var(--lime) !important;
+
+  box-shadow:
+    0 0 12px var(--green),
+    0 0 30px rgba(0,255,100,.25),
+    inset 0 0 25px rgba(0,255,100,.08) !important;
+}
+
+
+/* ===== DIFFERENT GREEN COLORS ===== */
+
+h1{
+  color:var(--lime) !important;
+  text-shadow:
+    0 0 5px var(--lime),
+    0 0 15px var(--green),
+    0 0 35px var(--green);
+
+  animation:glitchGlow 2s infinite alternate;
+}
+
+h2{
+  color:var(--green) !important;
+  text-shadow:0 0 12px var(--green);
+}
+
+h3{
+  color:var(--soft) !important;
+}
+
+p{
+  color:#b8ffd1 !important;
+}
+
+a{
+  color:var(--lime) !important;
+}
+
+
+/* ===== HACKER GLITCH ===== */
+
+@keyframes glitchGlow{
+  0%{
+    text-shadow:
+      2px 0 var(--green),
+      -2px 0 var(--emerald),
+      0 0 15px var(--green);
+  }
+
+  50%{
+    text-shadow:
+      -2px 0 var(--lime),
+      2px 0 var(--soft),
+      0 0 30px var(--green);
+  }
+
+  100%{
+    text-shadow:
+      2px 0 var(--emerald),
+      -2px 0 var(--lime),
+      0 0 45px var(--green);
+  }
+}
+
+
+/* ===== TERMINAL STYLE ===== */
+
+.terminal{
+  background:#010503 !important;
+
+  border:2px solid var(--green) !important;
+
+  box-shadow:
+    0 0 15px rgba(0,255,100,.5),
+    inset 0 0 30px rgba(0,255,100,.08) !important;
+
+  color:var(--green) !important;
+
+  font-family:"Courier New",monospace;
+}
+
+
+/* Terminal dots */
+.terminal::before{
+  content:"●  ●  ●";
+  display:block;
+  color:var(--green);
+  letter-spacing:6px;
+  margin-bottom:15px;
+}
+
+
+/* ===== SKILL / LANGUAGE BOX ===== */
+
+.skill,
+.language,
+.tech-card{
+  border:2px solid var(--emerald) !important;
+  background:rgba(0,25,15,.9) !important;
+
+  min-height:80px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:bold;
+
+  box-shadow:
+    0 0 10px rgba(0,200,83,.3);
+}
+
+.skill:hover,
+.language:hover,
+.tech-card:hover{
+  border-color:var(--lime) !important;
+
+  box-shadow:
+    0 0 10px var(--lime),
+    0 0 30px rgba(0,255,102,.4);
+
+  transform:
+    translateY(-7px)
+    scale(1.03);
+}
+
+
+/* ===== NAVBAR ===== */
 
 nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:18px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,4,2,.78);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(0,255,100,.2);
-    z-index:20;
-}
+  background:rgba(0,8,5,.88) !important;
 
-.logo{
-    color:#00ff73;
-    font-weight:bold;
-    letter-spacing:3px;
-    text-shadow:0 0 15px #00ff73;
+  border-bottom:
+    2px solid var(--green) !important;
+
+  box-shadow:
+    0 0 15px rgba(0,255,102,.3);
 }
 
 nav a{
-    color:#799383;
-    text-decoration:none;
-    margin-left:25px;
-    transition:.3s;
+  position:relative;
+  transition:.3s;
 }
 
 nav a:hover{
-    color:#00ff73;
-    text-shadow:0 0 15px #00ff73;
+  color:var(--lime) !important;
+
+  text-shadow:
+    0 0 8px var(--green),
+    0 0 18px var(--green);
 }
 
-/* HERO */
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:100px 20px 40px;
-}
+/* ===== BUTTON ===== */
 
-.hacker-window{
-    width:min(1000px,100%);
-    background:rgba(0,10,5,.75);
-    border:1px solid rgba(0,255,100,.35);
-    box-shadow:
-        0 0 50px rgba(0,255,100,.08),
-        inset 0 0 50px rgba(0,255,100,.03);
-    position:relative;
-    overflow:hidden;
-}
-
-.hacker-window::before{
-    content:"";
-    position:absolute;
-    left:0;
-    width:100%;
-    height:2px;
-    background:#00ff73;
-    box-shadow:0 0 20px #00ff73;
-    animation:scanner 4s linear infinite;
-}
-
-@keyframes scanner{
-    from{top:-2px}
-    to{top:100%}
-}
-
-.window-top{
-    padding:12px 18px;
-    border-bottom:1px solid rgba(0,255,100,.15);
-    color:#5d7566;
-    font-size:13px;
-}
-
-.window-top span{
-    color:#00ff73;
-}
-
-.hero-content{
-    padding:65px 40px;
-    text-align:center;
-}
-
-.boot{
-    color:#00ff73;
-    letter-spacing:4px;
-    font-size:13px;
-    margin-bottom:25px;
-    animation:blink 1.2s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:.3}
-}
-
-/* GLITCH */
-
-.glitch{
-    position:relative;
-    display:inline-block;
-    color:#fff;
-    font-size:clamp(50px,9vw,100px);
-    font-weight:bold;
-    text-shadow:
-        0 0 8px #00ff73,
-        0 0 30px rgba(0,255,100,.4);
-    animation:glitch 2.5s infinite;
-}
-
-@keyframes glitch{
-    0%,88%,100%{
-        transform:none;
-    }
-
-    90%{
-        transform:skewX(10deg);
-    }
-
-    92%{
-        transform:translateX(-8px);
-    }
-
-    94%{
-        transform:translateX(8px);
-    }
-}
-
-.typing{
-    color:#00ff73;
-    font-size:20px;
-    margin:20px 0;
-    min-height:30px;
-}
-
-.cursor{
-    animation:cursor .6s infinite;
-}
-
-@keyframes cursor{
-    50%{opacity:0}
-}
-
-.hero-text{
-    max-width:650px;
-    margin:auto;
-    color:#82968a;
-    line-height:1.8;
-}
-
-.buttons{
-    margin-top:30px;
-}
-
+button,
 .btn{
-    display:inline-block;
-    padding:13px 25px;
-    margin:7px;
-    border:1px solid #00ff73;
-    color:#00ff73;
-    text-decoration:none;
-    transition:.3s;
+  background:#031b0e !important;
+  color:var(--lime) !important;
+
+  border:2px solid var(--green) !important;
+  border-radius:3px !important;
+
+  box-shadow:
+    0 0 10px rgba(0,255,102,.3);
+
+  font-family:monospace;
+  font-weight:bold;
+
+  transition:.3s;
 }
 
+button:hover,
 .btn:hover{
-    background:#00ff73;
-    color:#000;
-    box-shadow:0 0 30px rgba(0,255,100,.6);
+  background:var(--darkgreen) !important;
+
+  color:white !important;
+
+  box-shadow:
+    0 0 10px var(--green),
+    0 0 30px var(--green);
+
+  transform:scale(1.05);
 }
 
-/* SECTIONS */
 
-section{
-    padding:100px 8%;
+/* ===== CURSOR ===== */
+
+*{
+  cursor:crosshair;
 }
 
-.title{
-    color:white;
-    font-size:32px;
-    margin-bottom:40px;
-}
 
-.title span{
-    color:#00ff73;
-}
-
-/* TERMINAL */
-
-.terminal{
-    background:#010302;
-    border:1px solid rgba(0,255,100,.25);
-    padding:30px;
-    line-height:2;
-    color:#8ca99a;
-    box-shadow:inset 0 0 40px rgba(0,255,100,.03);
-}
-
-.green{
-    color:#00ff73;
-}
-
-/* ROBOTICS */
-
-.robotics{
-    padding:40px;
-    border:1px solid rgba(0,255,100,.3);
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(0,255,100,.09),
-            transparent 30%
-        ),
-        rgba(0,10,5,.75);
-    transition:.4s;
-}
-
-.robotics:hover{
-    transform:translateY(-8px);
-    border-color:#00ff73;
-    box-shadow:0 0 35px rgba(0,255,100,.15);
-}
-
-.robot{
-    font-size:70px;
-    display:inline-block;
-    animation:robot 2.5s ease-in-out infinite;
-}
-
-@keyframes robot{
-    0%,100%{
-        transform:translateY(0) rotate(0);
-    }
-
-    50%{
-        transform:translateY(-12px) rotate(4deg);
-    }
-}
-
-.robotics h3{
-    color:#00ff73;
-    margin:20px 0 12px;
-    font-size:25px;
-}
-
-/* LANGUAGES */
-
-.languages{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(170px,1fr));
-    gap:18px;
-}
-
-.language{
-    padding:24px;
-    border:1px solid rgba(0,255,100,.2);
-    background:rgba(0,10,5,.7);
-    transition:.35s;
-    position:relative;
-    overflow:hidden;
-}
-
-.language:hover{
-    transform:translateY(-8px);
-    border-color:#00ff73;
-    box-shadow:0 0 25px rgba(0,255,100,.15);
-}
-
-.language h3{
-    color:#00ff73;
-    margin-bottom:15px;
-}
-
-.progress{
-    height:4px;
-    background:#102017;
-}
-
-.progress span{
-    display:block;
-    height:100%;
-    width:80%;
-    background:#00ff73;
-    box-shadow:0 0 12px #00ff73;
-    animation:load 1.8s ease;
-}
-
-@keyframes load{
-    from{width:0}
-}
-
-/* SKILLS */
-
-.skills{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    padding:30px;
-    background:rgba(0,10,5,.7);
-    border:1px solid rgba(0,255,100,.18);
-    transition:.35s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#00ff73;
-    box-shadow:0 0 25px rgba(0,255,100,.12);
-}
-
-.card-icon{
-    font-size:35px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    color:#00ff73;
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#819488;
-    line-height:1.7;
-}
-
-/* CONTACT */
-
-.contact{
-    text-align:center;
-}
-
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    padding:40px;
-    border:1px solid rgba(0,255,100,.25);
-    background:rgba(0,10,5,.7);
-}
-
-/* FOOTER */
-
-footer{
-    padding:30px;
-    text-align:center;
-    color:#4c6254;
-    border-top:1px solid rgba(0,255,100,.12);
-}
-
-/* REVEAL */
-
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:1s;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
+/* ===== MOBILE ===== */
 
 @media(max-width:700px){
 
-    nav div:last-child{
-        display:none;
-    }
+  section,
+  .card,
+  .project,
+  .skill{
+    margin:10px;
+  }
 
-    .hero-content{
-        padding:55px 20px;
-    }
-
-    section{
-        padding:75px 5%;
-    }
+  h1{
+    font-size:2rem;
+  }
 }
-</style>
-</head>
-
-<body>
-
-<canvas id="matrix"></canvas>
-
-<!-- NAV -->
-
-<nav>
-
-    <div class="logo">
-        SANJIDA.exe
-    </div>
-
-    <div>
-        <a href="#about">ABOUT</a>
-        <a href="#robotics">ROBOTICS</a>
-        <a href="#code">CODE</a>
-        <a href="#contact">CONTACT</a>
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hacker-window">
-
-    <div class="window-top">
-        <span>●</span>
-        SECURE TERMINAL
-        &nbsp; | &nbsp;
-        CONNECTION ENCRYPTED
-        &nbsp; | &nbsp;
-        ACCESS GRANTED
-    </div>
-
-    <div class="hero-content">
-
-        <div class="boot">
-            [ SYSTEM BOOTING... ]
-        </div>
-
-        <div class="glitch">
-            SANJIDA
-        </div>
-
-        <div class="typing">
-            <span id="typing"></span>
-            <span class="cursor">_</span>
-        </div>
-
-        <p class="hero-text">
-            Cybersecurity • Robotics • Programming • AI
-            <br>
-            Exploring technology and building the future,
-            one line of code at a time.
-        </p>
-
-        <div class="buttons">
-
-            <a class="btn" href="#about">
-                ENTER SYSTEM
-            </a>
-
-            <a class="btn" href="#code">
-                VIEW CODE
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about" class="reveal">
-
-<h2 class="title">
-    <span>01 //</span> DIGITAL IDENTITY
-</h2>
-
-<div class="terminal">
-
-    <span class="green">root@sanjida:~$</span> whoami
-    <br>
-    > Sanjida Yeasmin Anmona
-    <br><br>
-
-    <span class="green">root@sanjida:~$</span> interests
-    <br>
-    > Cybersecurity
-    <br>
-    > Programming
-    <br>
-    > Robotics
-    <br>
-    > Artificial Intelligence
-    <br><br>
-
-    <span class="green">root@sanjida:~$</span> status
-    <br>
-    > <span class="green">ONLINE // LEARNING // BUILDING</span>
-
-</div>
-
-</section>
-
-
-<!-- ROBOTICS -->
-
-<section id="robotics" class="reveal">
-
-<h2 class="title">
-    <span>02 //</span> ROBOTICS
-</h2>
-
-<div class="robotics">
-
-    <div class="robot">
-        🤖
-    </div>
-
-    <h3>
-        Cumilla Robotics and Programming
-    </h3>
-
-    <p>
-        Exploring robotics and programming through
-        technology, creativity, experimentation
-        and problem solving.
-    </p>
-
-</div>
-
-</section>
-
-
-<!-- PROGRAMMING -->
-
-<section id="code" class="reveal">
-
-<h2 class="title">
-    <span>03 //</span> PROGRAMMING STACK
-</h2>
-
-<div class="languages">
-
-    <div class="language">
-        <h3>Python</h3>
-        <div class="progress">
-            <span style="width:88%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>C</h3>
-        <div class="progress">
-            <span style="width:75%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>C++</h3>
-        <div class="progress">
-            <span style="width:78%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>Java</h3>
-        <div class="progress">
-            <span style="width:65%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>JavaScript</h3>
-        <div class="progress">
-            <span style="width:72%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>HTML</h3>
-        <div class="progress">
-            <span style="width:92%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>CSS</h3>
-        <div class="progress">
-            <span style="width:86%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>SQL</h3>
-        <div class="progress">
-            <span style="width:60%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>Bash</h3>
-        <div class="progress">
-            <span style="width:70%"></span>
-        </div>
-    </div>
-
-    <div class="language">
-        <h3>Linux</h3>
-        <div class="progress">
-            <span style="width:74%"></span>
-        </div>
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- TECH -->
-
-<section class="reveal">
-
-<h2 class="title">
-    <span>04 //</span> TECH INTERESTS
-</h2>
-
-<div class="skills">
-
-    <div class="card">
-
-        <div class="card-icon">
-            🔐
-        </div>
-
-        <h3>
-            Cybersecurity
-        </h3>
-
-        <p>
-            Exploring ethical hacking,
-            networking, Linux and
-            security fundamentals.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            🤖
-        </div>
-
-        <h3>
-            Robotics
-        </h3>
-
-        <p>
-            Exploring robots,
-            programming, automation
-            and intelligent machines.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            🧠
-        </div>
-
-        <h3>
-            Artificial Intelligence
-        </h3>
-
-        <p>
-            Exploring AI,
-            automation and
-            emerging technologies.
-        </p>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-icon">
-            💻
-        </div>
-
-        <h3>
-            Programming
-        </h3>
-
-        <p>
-            Learning programming
-            and creating practical
-            technology projects.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="contact reveal">
-
-<h2 class="title">
-    <span>05 //</span> CONNECTION
-</h2>
-
-<div class="contact-box">
-
-    <p>
-        Interested in technology,
-        communication, teamwork
-        and learning new skills.
-    </p>
-
-    <div class="buttons">
-
-        <a class="btn"
-           href="mailto:your-email@example.com">
-            SEND MESSAGE
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<footer>
-    SANJIDA // CYBER ID // 2026
-</footer>
-
-
-<script>
-
-/* TYPING */
-
-const words = [
-    "CYBERSECURITY EXPLORER",
-    "ROBOTICS & PROGRAMMING",
-    "AI ENTHUSIAST",
-    "TECHNOLOGY EXPLORER",
-    "FUTURE DIGITAL BUILDER"
-];
-
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function type(){
-
-    const target =
-        document.getElementById("typing");
-
-    const current =
-        words[wordIndex];
-
-    if(!deleting){
-
-        target.textContent =
-            current.substring(0,charIndex++);
-
-        if(charIndex > current.length){
-
-            deleting = true;
-
-            setTimeout(type,1200);
-
-            return;
-        }
-
-    }else{
-
-        target.textContent =
-            current.substring(0,charIndex--);
-
-        if(charIndex < 0){
-
-            deleting = false;
-
-            wordIndex =
-                (wordIndex + 1) % words.length;
-
-            charIndex = 0;
-        }
-    }
-
-    setTimeout(
-        type,
-        deleting ? 35 : 75
-    );
-}
-
-type();
-
-
-/* SCROLL REVEAL */
-
-const observer =
-new IntersectionObserver(
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-                entry.target.classList.add("show");
-            }
-
-        });
-
-    },
-    {threshold:.15}
-);
-
-document
-.querySelectorAll(".reveal")
-.forEach(el =>
-    observer.observe(el)
-);
-
-
-/* MATRIX */
-
-const canvas =
-document.getElementById("matrix");
-
-const ctx =
-canvas.getContext("2d");
-
-const characters =
-"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%<>/{}[]";
-
-const size = 14;
-
-let columns;
-let drops;
-
-function setupMatrix(){
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-
-    columns =
-        Math.floor(canvas.width / size);
-
-    drops =
-        Array(columns).fill(1);
-}
-
-setupMatrix();
-
-function matrix(){
-
-    ctx.fillStyle =
-        "rgba(0,4,2,.08)";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    ctx.fillStyle =
-        "#00ff73";
-
-    ctx.font =
-        size + "px monospace";
-
-    for(let i=0;i<drops.length;i++){
-
-        const char =
-            characters[
-                Math.floor(
-                    Math.random() *
-                    characters.length
-                )
-            ];
-
-        ctx.fillText(
-            char,
-            i * size,
-            drops[i] * size
-        );
-
-        if(
-            drops[i] * size >
-            canvas.height &&
-            Math.random() > .975
-        ){
-            drops[i] = 0;
-        }
-
-        drops[i]++;
-    }
-}
-
-setInterval(matrix,45);
-
-window.addEventListener(
-    "resize",
-    setupMatrix
-);
-
-</script>
-
-</body>
-</html>
-```
