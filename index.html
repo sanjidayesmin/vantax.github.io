@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sanjida | Cybersecurity Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:monospace;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020604;
+    color:#eafff2;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 8%;
+    background:rgba(2,6,4,.9);
+    border-bottom:1px solid #123d28;
+    z-index:1000;
+}
+
+nav a{
+    color:#00ff88;
+    text-decoration:none;
+    margin-right:25px;
+}
+
+nav a:hover{
+    text-shadow:0 0 10px #00ff88;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    background:
+    radial-gradient(circle at center,#062817 0%,#020604 45%);
+}
+
+.terminal{
+    max-width:850px;
+}
+
+.terminal small{
+    color:#00ff88;
+}
+
+h1{
+    font-size:clamp(45px,8vw,90px);
+    margin:15px 0;
+    color:#00ff88;
+    text-shadow:0 0 20px #00ff88;
+}
+
+.typing{
+    font-size:22px;
+    color:#b8ffd5;
+}
+
+.cursor{
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+.btn{
+    display:inline-block;
+    margin:30px 8px 0;
+    padding:12px 22px;
+    border:1px solid #00ff88;
+    color:#00ff88;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.btn:hover{
+    background:#00ff88;
+    color:#020604;
+    box-shadow:0 0 20px #00ff88;
+}
+
+/* SECTIONS */
+
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+h2{
+    color:#00ff88;
+    font-size:32px;
+    margin-bottom:30px;
+}
+
+h2::before{
+    content:"./";
+    color:#4affaa;
+}
+
+p{
+    color:#b9cfc1;
+    line-height:1.8;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill{
+    padding:12px 18px;
+    border:1px solid #145c36;
+    background:#06130b;
+    border-radius:5px;
+    color:#00ff88;
+}
+
+.skill:hover{
+    box-shadow:0 0 15px #00ff88;
+    transform:translateY(-3px);
+}
+
+/* PROJECTS */
+
+.project{
+    padding:25px;
+    margin:20px 0;
+    background:#06100a;
+    border-left:3px solid #00ff88;
+    border-radius:5px;
+    transition:.3s;
+}
+
+.project:hover{
+    transform:translateX(8px);
+    box-shadow:0 0 20px #063d21;
+}
+
+.project h3{
+    color:#00ff88;
+    margin-bottom:10px;
+}
+
+/* TERMINAL */
+
+.codebox{
+    background:#010301;
+    border:1px solid #123d28;
+    padding:20px;
+    border-radius:7px;
+    color:#00ff88;
+    overflow:auto;
+}
+
+.white{
+    color:#eafff2;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:35px;
+    border-top:1px solid #123d28;
+    color:#567563;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="terminal">
+
+<small>root@sanjida:~$ whoami</small>
+
+<h1>SANJIDA</h1>
+
+<div class="typing">
+Cybersecurity Learner | AI Enthusiast<span class="cursor">_</span>
+</div>
+
+<a href="#projects" class="btn">View Projects</a>
+<a href="#contact" class="btn">Contact Me</a>
+
+</div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>about</h2>
+
+<p>
+I am passionate about cybersecurity, artificial intelligence,
+programming and technology. I am currently developing my skills
+in cybersecurity while exploring AI, automation and programming.
+</p>
+
+<br>
+
+<div class="codebox">
+
+$ learning --now
+
+<br><br>
+
+<span class="white">→ Cybersecurity</span><br>
+<span class="white">→ Python</span><br>
+<span class="white">→ Artificial Intelligence</span><br>
+<span class="white">→ Linux</span><br>
+<span class="white">→ Automation</span>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2>skills</h2>
+
+<div class="skills">
+
+<div class="skill">Cybersecurity</div>
+<div class="skill">Ethical Hacking</div>
+<div class="skill">Python</div>
+<div class="skill">AI</div>
+<div class="skill">Linux</div>
+<div class="skill">Programming</div>
+<div class="skill">Communication</div>
+<div class="skill">Teamwork</div>
+<div class="skill">Video Editing</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2>projects</h2>
+
+<div class="project">
+
+<h3>01 — Cybersecurity Learning</h3>
+
+<p>
+Learning cybersecurity fundamentals, Linux,
+networking and ethical hacking concepts.
+</p>
+
+</div>
+
+
+<div class="project">
+
+<h3>02 — AI Exploration</h3>
+
+<p>
+Exploring artificial intelligence, automation
+and AI-powered technologies.
+</p>
+
+</div>
+
+
+<div class="project">
+
+<h3>03 — Python Projects</h3>
+
+<p>
+Building beginner-level Python projects while
+developing programming skills.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2>contact</h2>
+
+<p>
+Want to connect or collaborate?
+</p>
+
+<br>
+
+<a class="btn"
+href="https://github.com/"
+target="_blank">
+GitHub
+</a>
+
+</section>
+
+
+<footer>
+
+© 2026 Sanjida Yeasmin — Built with curiosity & code.
+
+</footer>
+
+</body>
+</html>
