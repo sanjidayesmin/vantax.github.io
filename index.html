@@ -3,218 +3,180 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Sanjida | Cybersecurity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjida | Cyber • Robotics • Programming</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    background:#020607;
-    color:#dff;
-    font-family:Arial,sans-serif;
+    background:#050608;
+    color:#e8fff1;
+    font-family:Consolas,monospace;
     overflow-x:hidden;
 }
 
-canvas{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-}
-
-/* scanline */
-body:before{
+/* Background */
+body::before{
     content:"";
     position:fixed;
     inset:0;
-    background:repeating-linear-gradient(
-        0deg,
-        rgba(0,255,210,.025) 0px,
-        rgba(0,255,210,.025) 1px,
-        transparent 2px,
-        transparent 5px
-    );
-    pointer-events:none;
-    z-index:50;
+    background:
+      linear-gradient(rgba(0,255,120,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,255,120,.035) 1px,transparent 1px);
+    background-size:45px 45px;
+    z-index:-2;
 }
 
-/* LOADING SCREEN */
-#loader{
+body::after{
+    content:"";
     position:fixed;
-    inset:0;
-    background:#020506;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-    font-family:monospace;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    background:rgba(0,255,120,.08);
+    filter:blur(100px);
+    top:15%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
 }
 
-.loaderText{
-    color:#00ffd5;
-    font-size:18px;
-    margin-bottom:20px;
-    text-shadow:0 0 15px #00ffd5;
-}
-
-.progress{
-    width:280px;
-    height:3px;
-    background:#102323;
-    overflow:hidden;
-}
-
-.progress span{
-    display:block;
-    height:100%;
-    width:0;
-    background:#00ffd5;
-    box-shadow:0 0 15px #00ffd5;
-    animation:load 2.5s forwards;
-}
-
-@keyframes load{
-    to{width:100%}
-}
-
-/* NAV */
+/* Navigation */
 nav{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
-    padding:20px 7%;
+    padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(2,6,7,.7);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(0,255,213,.15);
-    z-index:100;
+    background:rgba(5,6,8,.75);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,255,120,.15);
+    z-index:1000;
 }
 
 .logo{
-    color:#00ffd5;
-    font-family:monospace;
-    font-size:21px;
-    text-shadow:0 0 15px #00ffd5;
+    color:#00ff78;
+    font-size:20px;
+    font-weight:bold;
 }
 
-nav ul{
-    display:flex;
-    gap:28px;
-    list-style:none;
+.logo::before{
+    content:"< ";
+}
+
+.logo::after{
+    content:" />";
 }
 
 nav a{
-    color:#9ab;
+    color:#a8b8ae;
     text-decoration:none;
-    font-family:monospace;
+    margin-left:25px;
     transition:.3s;
 }
 
 nav a:hover{
-    color:#00ffd5;
-    text-shadow:0 0 15px #00ffd5;
+    color:#00ff78;
+    text-shadow:0 0 12px #00ff78;
 }
 
-/* HERO */
+/* Hero */
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:100px 7%;
-    position:relative;
+    padding:100px 20px 50px;
 }
 
-.heroContent{
-    max-width:1000px;
+.terminal{
+    max-width:900px;
+    width:100%;
+    padding:45px;
+    border:1px solid rgba(0,255,120,.3);
+    background:rgba(5,10,8,.72);
+    box-shadow:
+      0 0 40px rgba(0,255,120,.08),
+      inset 0 0 40px rgba(0,255,120,.025);
+    position:relative;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.dots{
+    position:absolute;
+    top:15px;
+    left:18px;
+}
+
+.dots span{
+    display:inline-block;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#00ff78;
+    margin-right:5px;
+    opacity:.7;
 }
 
 .status{
-    color:#00ffd5;
-    font-family:monospace;
-    letter-spacing:4px;
-    font-size:14px;
+    color:#00ff78;
     margin-bottom:25px;
 }
 
-.status:before{
-    content:"●";
-    margin-right:10px;
-    animation:blink .8s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:.2}
-}
-
-.hero h1{
-    font-size:clamp(55px,10vw,120px);
-    line-height:.9;
-    letter-spacing:-5px;
-    position:relative;
-    animation:reveal 1.5s ease;
-}
-
-.hero h1 span{
-    color:#00ffd5;
+h1{
+    font-size:clamp(42px,8vw,85px);
+    color:#fff;
     text-shadow:
-        0 0 10px #00ffd5,
-        0 0 30px #00ffd5,
-        0 0 80px rgba(0,255,213,.5);
-}
-
-@keyframes reveal{
-    0%{
-        opacity:0;
-        transform:scale(1.3);
-        filter:blur(15px);
-    }
-    100%{
-        opacity:1;
-        transform:scale(1);
-        filter:blur(0);
-    }
-}
-
-.glitch{
-    animation:glitch 4s infinite;
+      0 0 8px #00ff78,
+      0 0 30px rgba(0,255,120,.35);
+    animation:glitch 2.5s infinite;
 }
 
 @keyframes glitch{
-    0%,92%,100%{transform:none}
-    93%{transform:skewX(8deg)}
-    94%{transform:translateX(-5px)}
-    95%{transform:translateX(5px)}
+    0%,90%,100%{transform:none}
+    92%{transform:translateX(3px)}
+    94%{transform:translateX(-3px)}
     96%{transform:none}
 }
 
 .typing{
-    margin-top:35px;
-    color:#8eaeb0;
-    font-family:monospace;
-    font-size:22px;
+    margin-top:18px;
+    color:#00ff78;
+    font-size:20px;
     min-height:30px;
 }
 
 .cursor{
-    color:#00ffd5;
-    animation:blink .6s infinite;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
 }
 
 .hero p{
-    max-width:650px;
-    margin:25px auto;
-    color:#789093;
+    color:#9daaa2;
     line-height:1.8;
+    margin:25px auto;
+    max-width:650px;
 }
 
 .buttons{
@@ -223,297 +185,169 @@ nav a:hover{
 
 .btn{
     display:inline-block;
-    padding:14px 28px;
+    padding:13px 25px;
     margin:7px;
-    color:#00ffd5;
-    border:1px solid #00ffd5;
+    color:#00ff78;
+    border:1px solid #00ff78;
     text-decoration:none;
-    font-family:monospace;
-    position:relative;
-    overflow:hidden;
-    transition:.4s;
+    transition:.3s;
 }
 
 .btn:hover{
-    color:#020607;
-    background:#00ffd5;
-    box-shadow:0 0 15px #00ffd5,0 0 50px rgba(0,255,213,.5);
-    transform:translateY(-5px);
+    background:#00ff78;
+    color:#050608;
+    box-shadow:0 0 25px rgba(0,255,120,.5);
 }
 
-/* floating core */
-.core{
-    position:absolute;
-    right:9%;
-    top:25%;
-    width:100px;
-    height:100px;
-    border:1px solid #00ffd5;
-    border-radius:50%;
-    box-shadow:
-        0 0 20px #00ffd5,
-        inset 0 0 20px rgba(0,255,213,.3);
-    animation:rotate 8s linear infinite;
-}
-
-.core:before,
-.core:after{
-    content:"";
-    position:absolute;
-    inset:12px;
-    border:1px dashed #00ffd5;
-    border-radius:50%;
-}
-
-.core:after{
-    inset:25px;
-    background:#00ffd5;
-    box-shadow:0 0 30px #00ffd5;
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes rotate{
-    to{transform:rotate(360deg)}
-}
-
-@keyframes pulse{
-    50%{transform:scale(.6);opacity:.5}
-}
-
-.scroll{
-    position:absolute;
-    bottom:25px;
-    font-family:monospace;
-    color:#557477;
-    animation:float 1.5s infinite;
-}
-
-@keyframes float{
-    50%{transform:translateY(10px)}
-}
-
-/* SECTIONS */
+/* Sections */
 section{
-    padding:110px 8%;
+    padding:100px 8%;
 }
 
-.title{
-    text-align:center;
-    font-size:45px;
-    margin-bottom:60px;
+.section-title{
+    font-size:32px;
+    margin-bottom:45px;
+    color:#fff;
 }
 
-.title span{
-    color:#00ffd5;
-    text-shadow:0 0 20px rgba(0,255,213,.5);
+.section-title span{
+    color:#00ff78;
 }
 
-/* TERMINAL */
-.terminal{
-    max-width:900px;
-    margin:auto;
-    background:rgba(3,10,13,.9);
-    border:1px solid #164b4b;
-    border-radius:12px;
-    box-shadow:0 0 40px rgba(0,255,213,.08);
-    overflow:hidden;
-    transition:.5s;
-}
-
-.terminal:hover{
-    border-color:#00ffd5;
-    box-shadow:0 0 50px rgba(0,255,213,.2);
-    transform:translateY(-8px);
-}
-
-.terminalTop{
-    padding:12px 18px;
-    background:#0a1317;
-    color:#587477;
-    font-family:monospace;
-}
-
-.terminalBody{
-    padding:35px;
-    font-family:monospace;
-    line-height:2;
-    color:#8aa;
-}
-
-.green{
-    color:#00ffd5;
-}
-
-/* SKILLS */
+/* Cards */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
     gap:22px;
 }
 
 .card{
     padding:30px;
-    background:rgba(4,12,15,.8);
-    border:1px solid rgba(0,255,213,.15);
-    border-radius:14px;
-    transition:.5s;
-    text-align:center;
-    transform-style:preserve-3d;
-}
-
-.card:hover{
-    transform:translateY(-12px) rotateX(5deg) rotateY(-5deg);
-    border-color:#00ffd5;
-    box-shadow:0 0 30px rgba(0,255,213,.18);
-}
-
-.icon{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    color:#00ffd5;
-    margin-bottom:12px;
-}
-
-.card p{
-    color:#718d90;
-    line-height:1.6;
-}
-
-/* EXPERIENCE */
-.timeline{
-    max-width:850px;
-    margin:auto;
-    border-left:1px solid #00ffd5;
-    padding-left:35px;
-}
-
-.exp{
-    position:relative;
-    margin-bottom:30px;
-    padding:28px;
-    background:rgba(4,11,14,.85);
-    border:1px solid rgba(0,255,213,.15);
-    border-radius:12px;
+    border:1px solid rgba(0,255,120,.18);
+    background:rgba(10,15,12,.65);
     transition:.4s;
-}
-
-.exp:before{
-    content:"";
-    position:absolute;
-    left:-43px;
-    top:30px;
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:#00ffd5;
-    box-shadow:0 0 20px #00ffd5;
-}
-
-.exp:hover{
-    transform:translateX(10px);
-    border-color:#00ffd5;
-}
-
-.exp h3{
-    color:#00ffd5;
-    margin-bottom:7px;
-}
-
-.exp small{
-    color:#527174;
-    font-family:monospace;
-}
-
-.exp p{
-    color:#809b9d;
-    margin-top:12px;
-    line-height:1.7;
-}
-
-/* PROJECTS */
-.project{
-    min-height:230px;
-    padding:30px;
-    background:linear-gradient(
-        145deg,
-        rgba(7,17,20,.9),
-        rgba(2,7,9,.9)
-    );
-    border:1px solid rgba(0,255,213,.16);
-    border-radius:15px;
-    transition:.5s;
     position:relative;
     overflow:hidden;
 }
 
-.project:after{
-    content:"010101010101010101";
+.card::before{
+    content:"";
     position:absolute;
-    right:-30px;
-    bottom:10px;
-    color:rgba(0,255,213,.05);
+    top:0;
+    left:-100%;
+    width:100%;
+    height:1px;
+    background:#00ff78;
+    transition:.5s;
+}
+
+.card:hover::before{
+    left:100%;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#00ff78;
+    box-shadow:0 0 30px rgba(0,255,120,.12);
+}
+
+.icon{
     font-size:35px;
+    margin-bottom:18px;
 }
 
-.project:hover{
-    transform:translateY(-12px);
-    border-color:#00ffd5;
-    box-shadow:0 0 40px rgba(0,255,213,.18);
+.card h3{
+    color:#00ff78;
+    margin-bottom:12px;
 }
 
-.project h3{
-    color:#00ffd5;
-    margin-bottom:15px;
-}
-
-.project p{
-    color:#80999c;
+.card p{
+    color:#8d9b92;
     line-height:1.7;
 }
 
-/* CONTACT */
+/* Robotics special */
+.robotics{
+    border-color:rgba(0,255,120,.35);
+    background:
+      linear-gradient(135deg,
+      rgba(0,255,120,.08),
+      rgba(5,10,8,.8));
+}
+
+.robot{
+    font-size:65px;
+    display:inline-block;
+    animation:robotMove 3s ease-in-out infinite;
+}
+
+@keyframes robotMove{
+    0%,100%{transform:translateX(0) rotate(0)}
+    25%{transform:translateX(8px) rotate(2deg)}
+    75%{transform:translateX(-8px) rotate(-2deg)}
+}
+
+/* Terminal */
+.terminal-box{
+    border:1px solid rgba(0,255,120,.25);
+    padding:25px;
+    background:#020403;
+    color:#9effbe;
+    line-height:2;
+    box-shadow:inset 0 0 30px rgba(0,255,120,.04);
+}
+
+.green{
+    color:#00ff78;
+}
+
+/* Contact */
 .contact{
     text-align:center;
 }
 
-.contact p{
-    color:#789093;
-    margin-bottom:30px;
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    border:1px solid rgba(0,255,120,.25);
 }
 
+/* Footer */
 footer{
-    padding:30px;
     text-align:center;
-    border-top:1px solid rgba(0,255,213,.15);
-    color:#496568;
-    font-family:monospace;
+    padding:30px;
+    border-top:1px solid rgba(0,255,120,.12);
+    color:#68736d;
 }
 
-/* MOBILE */
+/* Scroll animation */
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
 @media(max-width:700px){
-
-    nav ul{
-        display:none;
+    nav{
+        padding:15px 5%;
     }
 
-    .hero h1{
-        font-size:60px;
-        letter-spacing:-3px;
-    }
-
-    .core{
+    nav div:last-child{
         display:none;
     }
 
     section{
-        padding:80px 6%;
+        padding:80px 5%;
     }
 
-    .title{
-        font-size:35px;
+    .terminal{
+        padding:35px 20px;
     }
 }
 </style>
@@ -521,294 +355,57 @@ footer{
 
 <body>
 
-<!-- LOADING -->
-<div id="loader">
-    <div class="loaderText" id="bootText">
-        INITIALIZING SECURITY SYSTEM...
-    </div>
-    <div class="progress">
-        <span></span>
-    </div>
-</div>
-
-<canvas id="matrix"></canvas>
-
-<!-- NAV -->
 <nav>
-    <div class="logo">&lt;SANJIDA/&gt;</div>
-
-    <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skills">SKILLS</a></li>
-        <li><a href="#experience">EXPERIENCE</a></li>
-        <li><a href="#projects">PROJECTS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-    </ul>
+    <div class="logo">SANJIDA</div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#robotics">Robotics</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
-
 <!-- HERO -->
-<section class="hero" id="home">
-
-    <div class="core"></div>
-
-    <div class="heroContent">
-
-        <div class="status">
-            SECURE CONNECTION ESTABLISHED
-        </div>
-
-        <h1 class="glitch">
-            SANJIDA<br>
-            <span>YEASMIN</span>
-        </h1>
-
-        <div class="typing">
-            <span id="typing"></span>
-            <span class="cursor">█</span>
-        </div>
-
-        <p>
-            Cybersecurity learner exploring ethical hacking,
-            Python, AI and modern technology.
-            Turning curiosity into skills and ideas into projects.
-        </p>
-
-        <div class="buttons">
-            <a class="btn" href="#projects">ENTER SYSTEM</a>
-            <a class="btn" href="#contact">CONTACT</a>
-        </div>
-
-    </div>
-
-    <div class="scroll">
-        ↓ SCROLL TO EXPLORE ↓
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about">
-
-    <h2 class="title">SYSTEM <span>PROFILE</span></h2>
+<section class="hero">
 
     <div class="terminal">
 
-        <div class="terminalTop">
-            ● ● ● &nbsp; secure-terminal
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
-        <div class="terminalBody">
+        <div class="status">
+            [ SYSTEM ONLINE ]
+        </div>
 
-            <div>
-                <span class="green">root@sanjida:~$</span>
-                whoami
-            </div>
+        <h1>SANJIDA</h1>
 
-            <div>
-                Cybersecurity Learner & Technology Explorer
-            </div>
+        <div class="typing">
+            <span id="typing"></span><span class="cursor">_</span>
+        </div>
 
-            <br>
+        <p>
+            Exploring Cybersecurity, Robotics, Programming and AI.
+            Building skills through curiosity, creativity and continuous learning.
+        </p>
 
-            <div>
-                <span class="green">root@sanjida:~$</span>
-                interests
-            </div>
-
-            <div>
-                Cybersecurity / AI / Python / Technology
-            </div>
-
-            <br>
-
-            <div>
-                <span class="green">root@sanjida:~$</span>
-                objective
-            </div>
-
-            <div>
-                Learn. Build. Experiment. Improve.
-            </div>
-
-            <br>
-
-            <div>
-                <span class="green">root@sanjida:~$</span>
-                status
-            </div>
-
-            <div>
-                <span class="green">ONLINE ✓</span>
-            </div>
-
+        <div class="buttons">
+            <a href="#skills" class="btn">EXPLORE</a>
+            <a href="#contact" class="btn">CONNECT</a>
         </div>
 
     </div>
 
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="reveal">
 
-<!-- SKILLS -->
-<section id="skills">
+    <h2 class="section-title">
+        <span>01.</span> About Me
+    </h2>
 
-    <h2 class="title">SECURITY <span>SKILLS</span></h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <div class="icon">🔐</div>
-            <h3>Cybersecurity</h3>
-            <p>
-                Security fundamentals and ethical hacking learning.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🐍</div>
-            <h3>Python</h3>
-            <p>
-                Programming, automation and problem solving.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🐧</div>
-            <h3>Linux</h3>
-            <p>
-                Exploring Linux systems and command line.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🌐</div>
-            <h3>Networking</h3>
-            <p>
-                Learning networks, protocols and security.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🤖</div>
-            <h3>AI</h3>
-            <p>
-                Exploring AI and intelligent automation.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎬</div>
-            <h3>Video Editing</h3>
-            <p>
-                Basic creative video editing experience.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-        <div class="exp">
-            <h3>Cumilla Robotics and Programming Olympiad</h3>
-            <small>2022 • SELECTED</small>
-            <p>
-                Selected for the Cumilla Programming Olympiad,
-                strengthening an early interest in programming
-                and problem solving.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects">
-
-    <h2 class="title">PROJECT <span>DATABASE</span></h2>
-
-    <div class="grid">
-
-        <div class="project">
-            <h3>🛡 CYBERSECURITY LAB</h3>
-            <p>
-                Personal learning projects focused on Linux,
-                networking and cybersecurity fundamentals.
-            </p>
-        </div>
-
-        <div class="project">
-            <h3>🐍 PYTHON PROJECTS</h3>
-            <p>
-                Small Python projects created while learning
-                programming and automation.
-            </p>
-        </div>
-
-        <div class="project">
-            <h3>🤖 AI AUTOMATION</h3>
-            <p>
-                Exploring practical AI-powered automation
-                and technology ideas.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-
-    <h2 class="title">OPEN <span>CHANNEL</span></h2>
-
-    <p>
-        Cybersecurity • AI • Python • Technology
-    </p>
-
-    <a class="btn" href="mailto:your@email.com">
-        SEND MESSAGE
-    </a>
-
-</section>
-
-
-<footer>
-    SYSTEM ONLINE • © 2026 SANJIDA YEASMIN
-</footer>
-
-
-<script>
-
-/* ================================
-   BOOT SCREEN
-================================ */
-
-const loader=document.getElementById("loader");
-
-setTimeout(()=>{
-    loader.style.opacity="0";
-    loader.style.transition="1s";
-
-    setTimeout(()=>{
-        loader.style.display="none";
-    },1000);
-
-},3000);
-
-
-/* ================================
-   TYPING EFFECT
-================================ */
-
-const words=[
-    "CYBERSECURITY LEARNER",
-    "ETHICAL HACKING ENTHUSIAS
+    <div class="t
 ```
