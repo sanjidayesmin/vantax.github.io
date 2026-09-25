@@ -3,220 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sanjida Yeasmin | Cybersecurity Portfolio</title>
+<title>Sanjida Yeasmin | Cybersecurity</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:#050807;
-    color:#e8fff0;
-    font-family:"Courier New",monospace;
-    line-height:1.7;
+  background:#030605;
+  color:#eafff1;
+  font-family:"Courier New",monospace;
+  overflow-x:hidden;
 }
 
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-    linear-gradient(rgba(0,255,120,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,255,120,.025) 1px,transparent 1px);
-    background-size:40px 40px;
+/* Moving background */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(0,255,120,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,120,.035) 1px,transparent 1px);
+  background-size:45px 45px;
+  animation:gridMove 8s linear infinite;
+}
+
+@keyframes gridMove{
+  from{background-position:0 0;}
+  to{background-position:45px 45px;}
 }
 
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:18px 8%;
-    background:rgba(5,8,7,.92);
-    border-bottom:1px solid #123d27;
-    backdrop-filter:blur(10px);
-    z-index:1000;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:10;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(3,6,5,.88);
+  border-bottom:1px solid #123d27;
+  backdrop-filter:blur(10px);
 }
 
 .logo{
-    color:#00ff73;
-    font-weight:bold;
-    font-size:20px;
+  color:#00ff73;
+  font-weight:bold;
 }
 
 nav a{
-    color:#a9c7b4;
-    text-decoration:none;
-    margin-left:25px;
-    font-size:14px;
+  color:#a9c7b4;
+  text-decoration:none;
+  margin-left:20px;
 }
 
 nav a:hover{
-    color:#00ff73;
+  color:#00ff73;
 }
 
 section{
-    max-width:1050px;
-    margin:auto;
-    padding:100px 25px;
+  max-width:1050px;
+  margin:auto;
+  padding:100px 25px;
 }
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .terminal{
-    color:#00ff73;
-    font-size:15px;
-    margin-bottom:15px;
+  color:#00ff73;
+  margin-bottom:18px;
+  min-height:25px;
 }
 
-h1{
-    font-size:clamp(40px,8vw,80px);
-    line-height:1.1;
-    margin-bottom:20px;
+.hero h1{
+  font-size:clamp(45px,8vw,82px);
+  line-height:1.05;
 }
 
 .green{
-    color:#00ff73;
-    text-shadow:0 0 15px rgba(0,255,115,.35);
+  color:#00ff73;
+  text-shadow:0 0 20px rgba(0,255,115,.5);
 }
 
 .subtitle{
-    color:#9ab4a3;
-    max-width:700px;
-    font-size:18px;
-}
-
-.buttons{
-    margin-top:30px;
-}
-
-.btn{
-    display:inline-block;
-    padding:12px 20px;
-    margin-right:10px;
-    margin-bottom:10px;
-    border:1px solid #00ff73;
-    color:#00ff73;
-    text-decoration:none;
-    border-radius:5px;
-    transition:.3s;
-}
-
-.btn:hover{
-    background:#00ff73;
-    color:#050807;
-    box-shadow:0 0 25px rgba(0,255,115,.3);
-}
-
-.title{
-    font-size:30px;
-    margin-bottom:35px;
-    color:#00ff73;
-}
-
-.title:before{
-    content:"./";
-    color:#527562;
-}
-
-.card{
-    background:rgba(10,20,15,.85);
-    border:1px solid #143c28;
-    border-radius:10px;
-    padding:25px;
-    margin-bottom:20px;
-    transition:.3s;
-}
-
-.card:hover{
-    border-color:#00ff73;
-    transform:translateY(-4px);
-}
-
-.card h3{
-    color:#dffff0;
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#91aa9b;
-}
-
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.skill{
-    border:1px solid #1c5b39;
-    padding:10px 15px;
-    border-radius:5px;
-    color:#00ff73;
-    background:#08130d;
-}
-
-.project{
-    position:relative;
-}
-
-.project span{
-    color:#00ff73;
-    font-size:13px;
-}
-
-.contact-box{
-    text-align:center;
-    border:1px solid #143c28;
-    padding:45px 20px;
-    border-radius:12px;
-    background:#08100c;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#527562;
-    border-top:1px solid #123d27;
+  color:#91aa9b;
+  max-width:700px;
+  font-size:18px;
+  margin-top:20px;
 }
 
 .cursor{
-    animation:blink 1s infinite;
+  animation:blink .8s infinite;
 }
 
 @keyframes blink{
-    50%{opacity:0}
+  50%{opacity:0;}
+}
+
+.buttons{
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 20px;
+  margin-right:10px;
+  border:1px solid #00ff73;
+  border-radius:5px;
+  color:#00ff73;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#00ff73;
+  color:#030605;
+  box-shadow:0 0 30px rgba(0,255,115,.5);
+  transform:translateY(-3px);
+}
+
+.title{
+  color:#00ff73;
+  font-size:30px;
+  margin-bottom:30px;
+}
+
+.title::before{
+  content:"./";
+  color:#527562;
+}
+
+.card{
+  background:rgba(7,17,11,.9);
+  border:1px solid #143c28;
+  border-radius:10px;
+  padding:25px;
+  margin-bottom:20px;
+  transition:.35s;
+  opacity:0;
+  transform:translateY(30px);
+  animation:appear .8s forwards;
+}
+
+.card:hover{
+  border-color:#00ff73;
+  box-shadow:0 0 25px rgba(0,255,115,.12);
+  transform:translateY(-5px);
+}
+
+@keyframes appear{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card h3{
+  color:#dffff0;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#91aa9b;
+}
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.skill{
+  padding:10px 15px;
+  border:1px solid #195d39;
+  border-radius:5px;
+  color:#00ff73;
+  background:#07110b;
+  transition:.3s;
+}
+
+.skill:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 18px rgba(0,255,115,.25);
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:25px;
+  color:#8fb29d;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#00ff73;
+  box-shadow:0 0 12px #00ff73;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.3;
+    transform:scale(.7);
+  }
+}
+
+.project-tag{
+  color:#00ff73;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.contact{
+  text-align:center;
+  border:1px solid #143c28;
+  border-radius:12px;
+  padding:45px 20px;
+  background:#07100b;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#527562;
+  border-top:1px solid #123d27;
 }
 
 @media(max-width:700px){
-    nav{
-        padding:15px 20px;
-    }
+  nav{
+    padding:15px 20px;
+  }
 
-    nav div:last-child{
-        display:none;
-    }
+  nav div:last-child{
+    display:none;
+  }
 
-    section{
-        padding:85px 20px;
-    }
+  section{
+    padding:85px 20px;
+  }
 
-    h1{
-        font-size:43px;
-    }
+  .hero h1{
+    font-size:48px;
+  }
 }
 </style>
 </head>
@@ -224,214 +265,250 @@ footer{
 <body>
 
 <nav>
-    <div class="logo">SANJIDA@SECURITY</div>
+  <div class="logo">SANJIDA@SECURITY</div>
 
-    <div>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
 
 <!-- HERO -->
-
 <section class="hero">
 
-    <div class="terminal">
-        root@sanjida:~$ whoami<span class="cursor">_</span>
-    </div>
+  <div class="terminal">
+    root@sanjida:~$ <span id="typing"></span><span class="cursor">_</span>
+  </div>
 
-    <h1>
-        Sanjida<br>
-        <span class="green">Yeasmin</span>
-    </h1>
+  <h1>
+    SANJIDA<br>
+    <span class="green">YEASMIN</span>
+  </h1>
 
-    <p class="subtitle">
-        Cybersecurity Enthusiast • Python Learner • AI & Technology Explorer
-    </p>
+  <p class="subtitle">
+    Cybersecurity Enthusiast • Python Learner • AI Explorer
+  </p>
 
-    <p class="subtitle" style="margin-top:15px;">
-        Learning how systems work, how they can be protected,
-        and how technology can be used to build useful solutions.
-    </p>
+  <div class="status">
+    <span class="dot"></span>
+    Currently learning cybersecurity & technology
+  </div>
 
-    <div class="buttons">
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="#contact" class="btn">Contact Me</a>
-    </div>
+  <div class="buttons">
+    <a href="#projects" class="btn">View Projects</a>
+    <a href="https://github.com/vantax" class="btn">GitHub</a>
+  </div>
 
 </section>
 
 
 <!-- ABOUT -->
-
 <section id="about">
 
-    <h2 class="title">about</h2>
+  <h2 class="title">about</h2>
 
-    <div class="card">
+  <div class="card">
+    <h3>Who Am I?</h3>
 
-        <h3>Who Am I?</h3>
+    <p>
+      I am a technology-focused learner interested in
+      cybersecurity, programming, artificial intelligence
+      and modern technology.
+    </p>
 
-        <p>
-            I am a technology learner with a strong interest in
-            cybersecurity, programming, AI and modern technology.
-            Currently I am building my skills in cybersecurity and
-            Python while exploring Linux, networking and AI.
-        </p>
+    <br>
 
-        <br>
-
-        <p>
-            My goal is to continuously learn, build practical projects
-            and develop strong technical and problem-solving skills.
-        </p>
-
-    </div>
+    <p>
+      I am continuously developing my technical skills
+      through self-learning, experimentation and practical
+      projects.
+    </p>
+  </div>
 
 </section>
 
 
 <!-- SKILLS -->
-
 <section id="skills">
 
-    <h2 class="title">skills</h2>
+  <h2 class="title">skills</h2>
 
-    <div class="skills">
+  <div class="skills">
 
-        <div class="skill">Cybersecurity</div>
-        <div class="skill">Python</div>
-        <div class="skill">Linux</div>
-        <div class="skill">Networking</div>
-        <div class="skill">AI</div>
-        <div class="skill">Programming</div>
-        <div class="skill">Git & GitHub</div>
-        <div class="skill">Problem Solving</div>
-        <div class="skill">Communication</div>
-        <div class="skill">Teamwork</div>
-        <div class="skill">Video Editing</div>
+    <div class="skill">Cybersecurity</div>
+    <div class="skill">Python</div>
+    <div class="skill">Linux</div>
+    <div class="skill">Networking</div>
+    <div class="skill">AI & Automation</div>
+    <div class="skill">Git & GitHub</div>
+    <div class="skill">Programming</div>
+    <div class="skill">Problem Solving</div>
+    <div class="skill">Communication</div>
+    <div class="skill">Teamwork</div>
 
-    </div>
+  </div>
 
 </section>
 
 
 <!-- PROJECTS -->
-
 <section id="projects">
 
-    <h2 class="title">projects</h2>
+  <h2 class="title">projects</h2>
 
-    <div class="card project">
+  <div class="card">
 
-        <span>[ PROJECT_01 ]</span>
+    <div class="project-tag">[ CYBERSECURITY ]</div>
 
-        <h3>Cybersecurity Learning Lab</h3>
+    <h3>Cybersecurity Learning Lab</h3>
 
-        <p>
-            A personal learning environment for exploring
-            cybersecurity concepts, Linux, networking and
-            ethical security practices.
-        </p>
+    <p>
+      Exploring cybersecurity concepts, Linux, networking
+      and ethical security practices through hands-on learning.
+    </p>
 
-    </div>
-
-
-    <div class="card project">
-
-        <span>[ PROJECT_02 ]</span>
-
-        <h3>Python Projects</h3>
-
-        <p>
-            Building beginner-friendly Python projects while
-            learning programming logic, automation and
-            problem solving.
-        </p>
-
-    </div>
+  </div>
 
 
-    <div class="card project">
+  <div class="card">
 
-        <span>[ PROJECT_03 ]</span>
+    <div class="project-tag">[ PYTHON ]</div>
 
-        <h3>AI Exploration</h3>
+    <h3>Python Projects</h3>
 
-        <p>
-            Exploring artificial intelligence and automation
-            to understand how modern AI systems can solve
-            real-world problems.
-        </p>
+    <p>
+      Building Python projects to improve programming,
+      automation and problem-solving skills.
+    </p>
 
-    </div>
+  </div>
+
+
+  <div class="card">
+
+    <div class="project-tag">[ AI ]</div>
+
+    <h3>AI & Automation Exploration</h3>
+
+    <p>
+      Exploring AI technologies and automation while
+      learning how they can be applied to practical problems.
+    </p>
+
+  </div>
 
 </section>
 
 
 <!-- EDUCATION -->
-
 <section>
 
-    <h2 class="title">education</h2>
+  <h2 class="title">education</h2>
 
-    <div class="card">
+  <div class="card">
 
-        <h3>HSC — 2025</h3>
+    <h3>HSC — 2025</h3>
 
-        <p>
-            Cumilla Government Women's College
-        </p>
+    <p>Cumilla Government Women's College</p>
 
-    </div>
+  </div>
 
 </section>
 
 
+<!-- EXPERIENCE -->
+<section>
 
+  <h2 class="title">experience</h2>
+
+  <div class="card">
+
+    <h3>Previous Experience</h3>
+
+    <p>
+      Experience in hospital and banking sectors,
+      with exposure to professional communication and teamwork.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h3>Achievement</h3>
+
+    <p>
+      Selected in Cumilla Programming Olympiad 2022.
+    </p>
+
+  </div>
+
+</section>
 
 
 <!-- CONTACT -->
-
 <section id="contact">
 
-    <h2 class="title">contact</h2>
+  <h2 class="title">contact</h2>
 
-    <div class="contact-box">
+  <div class="contact">
 
-        <h3>Let's Connect</h3>
+    <h3>Let's Connect</h3>
 
-        <p style="color:#91aa9b;margin:15px 0 25px;">
-            Interested in technology, cybersecurity and collaboration?
-        </p>
+    <p style="color:#91aa9b;margin:15px 0 25px;">
+      Interested in technology, cybersecurity and collaboration?
+    </p>
 
-        <a href="https://github.com/vantax" class="btn">
-            GitHub
-        </a>
+    <a href="https://github.com/vantax" class="btn">
+      GitHub
+    </a>
 
-        <a href="mailto:YOUR-EMAIL@gmail.com" class="btn">
-            Email
-        </a>
+    <a href="mailto:YOUR-EMAIL@gmail.com" class="btn">
+      Email
+    </a>
 
-    </div>
+  </div>
 
 </section>
 
 
 <footer>
 
-    <p>
-        root@sanjida:~$ exit
-    </p>
+  root@sanjida:~$ exit
 
-    <p style="margin-top:8px;">
-        © 2026 Sanjida Yeasmin
-    </p>
+  <br><br>
+
+  © 2026 Sanjida Yeasmin
 
 </footer>
+
+
+<script>
+
+const text = "whoami";
+const typing = document.getElementById("typing");
+
+let i = 0;
+
+function typeText(){
+
+  if(i < text.length){
+
+    typing.textContent += text.charAt(i);
+
+    i++;
+
+    setTimeout(typeText,120);
+
+  }
+
+}
+
+typeText();
+
+</script>
 
 </body>
 </html>
