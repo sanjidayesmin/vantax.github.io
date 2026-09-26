@@ -2,644 +2,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sanjida Yeasmin | Cybersecurity Portfolio</title>
+<title>Sanjida Yeasmin | Cybersecurity</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #050505;
-            color: #fff;
-            overflow-x: hidden;
-        }
+body{
+    background:#030507;
+    color:white;
+    font-family:Arial, sans-serif;
+    overflow-x:hidden;
+}
 
-        /* Background glow */
-        body::before {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: rgba(0, 255, 170, 0.08);
-            filter: blur(120px);
-            border-radius: 50%;
-            top: 10%;
-            left: -150px;
-            z-index: -1;
-        }
+/* ===== BACKGROUND ===== */
 
-        body::after {
-            content: "";
-            position: fixed;
-            width: 450px;
-            height: 450px;
-            background: rgba(0, 150, 255, 0.07);
-            filter: blur(120px);
-            border-radius: 50%;
-            bottom: 5%;
-            right: -150px;
-            z-index: -1;
-        }
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.88)),
+        url("hacker-girl.jpg") center/cover no-repeat;
+    z-index:-3;
+}
 
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,255,170,0.15);
-            z-index: 1000;
-        }
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(0,255,170,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,255,170,.04) 1px,transparent 1px);
+    background-size:45px 45px;
+    animation:gridMove 12s linear infinite;
+    z-index:-2;
+}
 
-        .logo {
-            color: #00ffae;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(45px);}
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-        }
+/* ===== NAVBAR ===== */
 
-        nav ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,255,170,.2);
+    z-index:1000;
+}
 
-        nav ul li a:hover {
-            color: #00ffae;
-        }
+.logo{
+    color:#00ffae;
+    font-size:21px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
 
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-        }
+nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
 
-        .hero-content {
-            max-width: 850px;
-        }
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    transition:.3s;
+}
 
-        .terminal {
-            color: #00ffae;
-            font-family: monospace;
-            font-size: 18px;
-            margin-bottom: 20px;
-            animation: blink 1s infinite alternate;
-        }
+nav a:hover{
+    color:#00ffae;
+    text-shadow:0 0 12px #00ffae;
+}
 
-        @keyframes blink {
-            from { opacity: 0.5; }
-            to { opacity: 1; }
-        }
+/* ===== HERO ===== */
 
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
-            margin-bottom: 15px;
-        }
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px 50px;
+    position:relative;
+}
 
-        .hero h1 span {
-            color: #00ffae;
-            text-shadow: 0 0 25px rgba(0,255,170,0.5);
-        }
+.hero-content{
+    max-width:850px;
+    animation:heroIn 1.5s ease;
+}
 
-        .typing {
-            font-size: clamp(20px, 4vw, 32px);
-            color: #aaa;
-            min-height: 45px;
-        }
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-        .hero p {
-            color: #888;
-            max-width: 650px;
-            margin: 25px auto;
-            line-height: 1.8;
-            font-size: 16px;
-        }
+.terminal{
+    color:#00ffae;
+    font-family:monospace;
+    font-size:18px;
+    margin-bottom:20px;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 13px 28px;
-            border: 1px solid #00ffae;
-            border-radius: 30px;
-            color: #00ffae;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.hero h1{
+    font-size:clamp(45px,8vw,85px);
+    letter-spacing:2px;
+}
 
-        .btn:hover {
-            background: #00ffae;
-            color: #000;
-            box-shadow: 0 0 25px rgba(0,255,170,0.4);
-        }
+.hero h1 span{
+    color:#00ffae;
+    text-shadow:
+        0 0 10px #00ffae,
+        0 0 30px rgba(0,255,170,.6);
+}
 
-        /* Sections */
-        section {
-            padding: 100px 8%;
-        }
+.typing{
+    margin-top:18px;
+    min-height:40px;
+    color:#00ffae;
+    font-family:monospace;
+    font-size:clamp(20px,4vw,30px);
+}
 
-        .title {
-            text-align: center;
-            font-size: 40px;
-            margin-bottom: 50px;
-        }
+.cursor{
+    animation:blink .7s infinite;
+}
 
-        .title span {
-            color: #00ffae;
-        }
+@keyframes blink{
+    50%{opacity:0;}
+}
 
-        /* About */
-        .about {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-        }
+.hero p{
+    max-width:650px;
+    margin:25px auto;
+    color:#bbb;
+    line-height:1.8;
+}
 
-        .about p {
-            color: #aaa;
-            line-height: 1.9;
-            font-size: 17px;
-        }
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 30px;
+    border:1px solid #00ffae;
+    border-radius:30px;
+    color:#00ffae;
+    text-decoration:none;
+    transition:.35s;
+}
 
-        /* Skills */
-        .skills-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
+.btn:hover{
+    background:#00ffae;
+    color:#000;
+    box-shadow:0 0 30px #00ffae;
+}
 
-        .skill-card {
-            padding: 35px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(0,255,170,0.15);
-            border-radius: 18px;
-            transition: 0.4s;
-            text-align: center;
-        }
+/* ===== SECTIONS ===== */
 
-        .skill-card:hover {
-            transform: translateY(-8px);
-            border-color: #00ffae;
-            box-shadow: 0 0 30px rgba(0,255,170,0.12);
-        }
+section{
+    padding:100px 8%;
+    background:rgba(0,0,0,.55);
+}
 
-        .skill-icon {
-            font-size: 45px;
-            margin-bottom: 18px;
-        }
+.title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:50px;
+}
 
-        .skill-card h3 {
-            color: #00ffae;
-            margin-bottom: 12px;
-        }
+.title span{
+    color:#00ffae;
+}
 
-        .skill-card p {
-            color: #888;
-            line-height: 1.6;
-        }
+/* ===== ABOUT ===== */
 
-        /* Projects */
-        .projects {
-            max-width: 1000px;
-            margin: auto;
-        }
+.about{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
 
-        .project-card {
-            padding: 35px;
-            margin-bottom: 20px;
-            border-left: 3px solid #00ffae;
-            background: rgba(255,255,255,0.025);
-            border-radius: 10px;
-            transition: 0.3s;
-        }
+.about p{
+    color:#aaa;
+    line-height:1.9;
+    font-size:17px;
+}
 
-        .project-card:hover {
-            transform: translateX(8px);
-        }
+/* ===== SKILLS ===== */
 
-        .project-card h3 {
-            color: #fff;
-            margin-bottom: 12px;
-        }
+.skills-grid{
+    max-width:950px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
 
-        .project-card p {
-            color: #888;
-            line-height: 1.7;
-        }
+.skill{
+    padding:35px;
+    background:rgba(0,0,0,.65);
+    border:1px solid rgba(0,255,170,.2);
+    border-radius:18px;
+    text-align:center;
+    transition:.4s;
+}
 
-        /* Achievement */
-        .achievement {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            padding: 40px;
-            border: 1px solid rgba(0,255,170,0.2);
-            border-radius: 20px;
-            background: rgba(255,255,255,0.025);
-        }
+.skill:hover{
+    transform:translateY(-10px);
+    border-color:#00ffae;
+    box-shadow:
+        0 0 25px rgba(0,255,170,.15),
+        inset 0 0 25px rgba(0,255,170,.04);
+}
 
-        .achievement h3 {
-            color: #00ffae;
-            margin-bottom: 15px;
-        }
+.icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
 
-        .achievement p {
-            color: #999;
-            line-height: 1.7;
-        }
+.skill h3{
+    color:#00ffae;
+    margin-bottom:12px;
+}
 
-        /* Contact */
-        .contact {
-            text-align: center;
-        }
+.skill p{
+    color:#888;
+    line-height:1.6;
+}
 
-        .contact p {
-            color: #888;
-            margin-bottom: 25px;
-        }
+/* ===== PROJECTS ===== */
 
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.projects{
+    max-width:900px;
+    margin:auto;
+}
 
-        .links a {
-            text-decoration: none;
-            color: #ddd;
-            border: 1px solid #333;
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: 0.3s;
-        }
+.project{
+    padding:30px;
+    margin-bottom:20px;
+    background:rgba(0,0,0,.65);
+    border-left:3px solid #00ffae;
+    border-radius:10px;
+    transition:.3s;
+}
 
-        .links a:hover {
-            color: #00ffae;
-            border-color: #00ffae;
-        }
+.project:hover{
+    transform:translateX(10px);
+    box-shadow:0 0 20px rgba(0,255,170,.1);
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #555;
-            border-top: 1px solid #151515;
-        }
+.project h3{
+    color:#00ffae;
+    margin-bottom:10px;
+}
 
-        /* Scroll animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 1s;
-        }
+.project p{
+    color:#999;
+    line-height:1.7;
+}
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* ===== ACHIEVEMENT ===== */
 
-        /* Mobile */
-        @media (max-width: 700px) {
-            nav {
-                padding: 15px 5%;
-            }
+.achievement{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+    padding:40px;
+    background:rgba(0,0,0,.65);
+    border:1px solid rgba(0,255,170,.2);
+    border-radius:20px;
+}
 
-            nav ul {
-                gap: 12px;
-                font-size: 13px;
-            }
+.achievement h3{
+    color:#00ffae;
+    margin-bottom:15px;
+}
 
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+.achievement p{
+    color:#999;
+    line-height:1.7;
+}
 
-            section {
-                padding: 80px 5%;
-            }
+/* ===== CONTACT ===== */
 
-            .title {
-                font-size: 32px;
-            }
-        }
-    </style>
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    color:#888;
+    margin-bottom:25px;
+}
+
+.links{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.links a{
+    color:#ddd;
+    text-decoration:none;
+    padding:12px 20px;
+    border:1px solid #333;
+    border-radius:25px;
+    transition:.3s;
+}
+
+.links a:hover{
+    color:#00ffae;
+    border-color:#00ffae;
+    box-shadow:0 0 15px rgba(0,255,170,.2);
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#555;
+    background:#020303;
+    border-top:1px solid #111;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:700px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav ul{
+        gap:12px;
+        font-size:12px;
+    }
+
+    .skills-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+    .title{
+        font-size:32px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">&lt;SANJIDA/&gt;</div>
+<!-- NAVBAR -->
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+    <div class="logo">&lt;SANJIDA/&gt;</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
 
-    <!-- HERO / FIRST PAGE -->
-    <section class="hero" id="home">
+<!-- HERO -->
 
-        <div class="hero-content">
+<section class="hero" id="home">
 
-            <div class="terminal">
-                &gt; system.init();_
-            </div>
+    <div class="hero-content">
 
-            <h1>
-                Sanjida <span>Yeasmin</span>
-            </h1>
-
-            <div class="typing" id="typing"></div>
-
-            <p>
-                Exploring cybersecurity, ethical hacking and programming.
-                Building skills, learning continuously and working toward
-                becoming a cybersecurity professional.
-            </p>
-
-            <a href="#about" class="btn">
-                Explore My Portfolio
-            </a>
-
+        <div class="terminal">
+            &gt; initializing_security_system..._
         </div>
 
-    </section>
+        <h1>
+            Sanjida <span>Yeasmin</span>
+        </h1>
 
-
-    <!-- ABOUT -->
-    <section id="about" class="reveal">
-
-        <h2 class="title">
-            About <span>Me</span>
-        </h2>
-
-        <div class="about">
-
-            <p>
-                I am Sanjida Yeasmin, a technology enthusiast interested in
-                cybersecurity and ethical hacking. I am currently developing
-                my skills in Python and C while learning the fundamentals of
-                cybersecurity. My goal is to keep learning, practice through
-                projects and grow as a cybersecurity professional.
-            </p>
-
+        <div class="typing">
+            <span id="typing"></span><span class="cursor">|</span>
         </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-    <section id="skills" class="reveal">
-
-        <h2 class="title">
-            My <span>Skills</span>
-        </h2>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <div class="skill-icon">🔐</div>
-                <h3>Cybersecurity</h3>
-                <p>
-                    Learning cybersecurity fundamentals, security concepts
-                    and defensive techniques.
-                </p>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🛡️</div>
-                <h3>Ethical Hacking</h3>
-                <p>
-                    Exploring ethical hacking, penetration testing concepts
-                    and security testing.
-                </p>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🐍</div>
-                <h3>Python</h3>
-                <p>
-                    Learning Python programming and building small projects
-                    to improve problem-solving skills.
-                </p>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">💻</div>
-                <h3>C</h3>
-                <p>
-                    Learning C programming fundamentals, logic and
-                    problem-solving.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section id="projects" class="reveal">
-
-        <h2 class="title">
-            My <span>Projects</span>
-        </h2>
-
-        <div class="projects">
-
-            <div class="project-card">
-                <h3>Cybersecurity Learning Lab</h3>
-                <p>
-                    A personal learning environment for practicing
-                    cybersecurity and ethical hacking concepts.
-                </p>
-            </div>
-
-            <div class="project-card">
-                <h3>Python Projects</h3>
-                <p>
-                    Small Python projects created while learning programming,
-                    automation and logical problem solving.
-                </p>
-            </div>
-
-            <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>
-                    This animated portfolio website created to showcase my
-                    technology journey and skills.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ACHIEVEMENT -->
-    <section class="reveal">
-
-        <h2 class="title">
-            <span>Achievement</span>
-        </h2>
-
-        <div class="achievement">
-
-            <h3>🏆 Cumilla Programming Olympiad 2022</h3>
-
-            <p>
-                Selected for Cumilla Programming Olympiad 2022,
-                an experience that increased my interest in programming
-                and technology.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact reveal">
-
-        <h2 class="title">
-            Contact <span>Me</span>
-        </h2>
 
         <p>
-            Interested in technology, cybersecurity and learning new skills.
+            Cybersecurity enthusiast exploring ethical hacking,
+            programming and security.
         </p>
 
-        <div class="links">
+        <a href="#about" class="btn">
+            ENTER THE SYSTEM
+        </a>
 
-            <a href="mailto:sanjidayesmin6095@gmail.com">
-                📧 Gmail
-            </a>
+    </div>
 
-            <a href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
-               target="_blank">
-                💼 LinkedIn
-            </a>
+</section>
 
-            <a href="https://www.facebook.com/profile.php?id=61574898345085"
-               target="_blank">
-                📘 Facebook
-            </a>
 
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+    <h2 class="title">
+        About <span>Me</span>
+    </h2>
+
+    <div class="about">
+
+        <p>
+            I am Sanjida Yeasmin, a cybersecurity enthusiast interested
+            in ethical hacking and programming. I am currently learning
+            Python and C while developing my cybersecurity knowledge.
+            My goal is to continuously learn, practice and grow in the
+            field of cybersecurity.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills" class="reveal">
+
+    <h2 class="title">
+        My <span>Skills</span>
+    </h2>
+
+    <div class="skills-grid">
+
+        <div class="skill">
+            <div class="icon">🔐</div>
+            <h3>Cybersecurity</h3>
+            <p>
+                Learning cybersecurity fundamentals,
+                security concepts and defensive techniques.
+            </p>
         </div>
 
-    </section>
+        <div class="skill">
+            <div class="icon">🛡️</div>
+            <h3>Ethical Hacking</h3>
+            <p>
+                Exploring ethical hacking and
+                security testing concepts.
+            </p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🐍</div>
+            <h3>Python</h3>
+            <p>
+                Learning Python programming and
+                building beginner projects.
+            </p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">💻</div>
+            <h3>C</h3>
+            <p>
+                Learning C programming,
+                logic and problem solving.
+            </p>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Sanjida Yeasmin | Cybersecurity Portfolio
-    </footer>
+<!-- PROJECTS -->
+
+<section id="projects" class="reveal">
+
+    <h2 class="title">
+        My <span>Projects</span>
+    </h2>
+
+    <div class="projects">
+
+        <div class="project">
+            <h3>Cybersecurity Learning Lab</h3>
+            <p>
+                A personal environment for learning and
+                practicing cybersecurity concepts.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>Python Projects</h3>
+            <p>
+                Small projects created while learning
+                Python and programming logic.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>Portfolio Website</h3>
+            <p>
+                An animated cybersecurity portfolio
+                created to showcase my learning journey.
+            </p>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script>
+<!-- ACHIEVEMENT -->
 
-        /* Typing animation */
+<section class="reveal">
 
-        const texts = [
-            "Cybersecurity Enthusiast",
-            "Ethical Hacking Learner",
-            "Python Learner",
-            "C Programmer"
-        ];
+    <h2 class="title">
+        <span>Achievement</span>
+    </h2>
 
-        let textIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
+    <div class="achievement">
 
-        function typeEffect() {
+        <h3>🏆 Cumilla Programming & Robotics</h3>
 
-            const typing = document.getElementById("typing");
-            const current = texts[textIndex];
+        <p>
+            Participated in Cumilla Programming & Robotics,
+            strengthening my interest in programming,
+            robotics and technology.
+        </p>
 
-            if (!deleting) {
-                typing.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
+    </div>
 
-                if (charIndex === current.length) {
-                    deleting = true;
-                    setTimeout(typeEffect, 1500);
-                    return;
-                }
+</section>
 
-            } else {
 
-                typing.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
+<!-- CONTACT -->
 
-                if (charIndex === 0) {
-                    deleting = false;
-                    textIndex++;
+<section id="contact" class="contact reveal">
 
-                    if (textIndex >= texts.length) {
-                        textIndex = 0;
-                    }
-                }
+    <h2 class="title">
+        Contact <span>Me</span>
+    </h2>
+
+    <p>
+        Let's connect and explore technology together.
+    </p>
+
+    <div class="links">
+
+        <a href="mailto:sanjidayesmin6095@gmail.com">
+            📧 Gmail
+        </a>
+
+        <a href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
+           target="_blank">
+            💼 LinkedIn
+        </a>
+
+        <a href="https://www.facebook.com/profile.php?id=61574898345085"
+           target="_blank">
+            📘 Facebook
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 Sanjida Yeasmin | Cybersecurity Portfolio
+</footer>
+
+
+<script>
+
+/* ===== TYPING EFFECT ===== */
+
+const words = [
+    "Cybersecurity Enthusiast",
+    "Ethical Hacking Learner",
+    "Python Learner",
+    "C Programmer"
+];
+
+let wordIndex = 0;
+let letterIndex = 0;
+let deleting = false;
+
+function typingEffect(){
+
+    const typing = document.getElementById("typing");
+    const word = words[wordIndex];
+
+    if(!deleting){
+
+        typing.textContent =
+            word.substring(0, letterIndex + 1);
+
+        letterIndex++;
+
+        if(letterIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(typingEffect, 1500);
+            return;
+        }
+
+    }else{
+
+        typing.textContent =
+            word.substring(0, letterIndex - 1);
+
+        letterIndex--;
+
+        if(letterIndex === 0){
+
+            deleting = false;
+            wordIndex++;
+
+            if(wordIndex >= words.length){
+                wordIndex = 0;
             }
+        }
+    }
 
-            setTimeout(typeEffect, deleting ? 50 : 90);
+    setTimeout(
+        typingEffect,
+        deleting ? 45 : 85
+    );
+}
+
+typingEffect();
+
+
+/* ===== SCROLL REVEAL ===== */
+
+function reveal(){
+
+    const elements =
+        document.querySelectorAll(".reveal");
+
+    elements.forEach(element => {
+
+        const position =
+            element.getBoundingClientRect().top;
+
+        if(position < window.innerHeight - 100){
+            element.classList.add("active");
         }
 
-        typeEffect();
+    });
+}
 
+window.addEventListener("scroll", reveal);
 
-        /* Scroll reveal */
+reveal();
 
-        function revealOnScroll() {
-
-            const reveals = document.querySelectorAll(".reveal");
-
-            reveals.forEach(element => {
-
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add("active");
-                }
-
-            });
-        }
-
-        window.addEventListener("scroll", revealOnScroll);
-
-        revealOnScroll();
-
-    </script>
+</script>
 
 </body>
 </html>
