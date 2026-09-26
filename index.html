@@ -1,813 +1,759 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sanjida Yeasmin | Cybersecurity</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
+    background:#020309;
+    color:white;
     font-family:Arial, Helvetica, sans-serif;
-    background:#030607;
-    color:#eaffff;
     overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-        linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.9)),
-        url("hacker-girl.jpg") center/cover no-repeat;
-    z-index:-3;
-    filter:brightness(.7) contrast(1.15);
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background-image:
+
+        linear-gradient(
+            90deg,
+            rgba(2,4,10,.94) 0%,
+            rgba(2,4,10,.75) 35%,
+            rgba(2,4,10,.35) 75%,
+            rgba(2,4,10,.18) 100%
+        ),
+
+        url("cyber-bg.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
 }
 
-body::after{
+
+/* Scan line effect */
+
+.hero::after{
+
     content:"";
-    position:fixed;
+
+    position:absolute;
+
     inset:0;
+
+    pointer-events:none;
+
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(0,255,170,.025) 0px,
-            rgba(0,255,170,.025) 1px,
-            transparent 1px,
-            transparent 4px
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,.025) 4px
         );
-    pointer-events:none;
-    z-index:20;
-}
 
-/* ================= NAVBAR ================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:20px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,.55);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(0,255,170,.15);
-    z-index:100;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#00ff9d;
-    text-shadow:0 0 15px #00ff9d;
-}
-
-.logo span{
-    color:#fff;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:30px;
-}
-
-nav ul li a{
-    color:#d9ffff;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-
-nav ul li a:hover{
-    color:#00ff9d;
-    text-shadow:0 0 12px #00ff9d;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 20px 70px;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:#00ff9d;
-    opacity:.07;
-    filter:blur(140px);
-    border-radius:50%;
-    animation:pulse 4s infinite alternate;
-}
-
-@keyframes pulse{
-    from{transform:scale(.8);}
-    to{transform:scale(1.2);}
-}
-
-/* Hacker image behind name */
-
-.hacker-image{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:min(620px,90vw);
-    height:720px;
-    z-index:0;
-    opacity:.52;
-    pointer-events:none;
-    overflow:hidden;
-
-    -webkit-mask-image:
-        linear-gradient(to bottom,transparent 0%,black 15%,black 78%,transparent 100%);
-    mask-image:
-        linear-gradient(to bottom,transparent 0%,black 15%,black 78%,transparent 100%);
-}
-
-.hacker-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-    filter:
-        brightness(.65)
-        contrast(1.2)
-        saturate(.8)
-        drop-shadow(0 0 35px rgba(0,255,157,.3));
-}
-
-/* Dark layer over image */
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(
-            circle at center,
-            transparent 5%,
-            rgba(0,0,0,.35) 45%,
-            rgba(0,0,0,.88) 90%
-        );
     z-index:1;
 }
 
-/* Hero content */
 
-.hero-content{
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+
+    height:85px;
+
+    padding:0 7%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
     position:relative;
-    z-index:5;
-    max-width:900px;
+
+    z-index:10;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:
+        1px solid
+        rgba(0,234,255,.20);
 }
 
-.terminal{
-    display:inline-block;
-    padding:9px 18px;
-    margin-bottom:22px;
-    border:1px solid #00ff9d;
-    color:#00ff9d;
-    border-radius:30px;
-    background:rgba(0,255,157,.06);
-    box-shadow:0 0 20px rgba(0,255,157,.15);
-    font-family:monospace;
-    font-size:13px;
-}
 
-.hero h1{
-    font-size:clamp(55px,9vw,110px);
-    line-height:.95;
-    letter-spacing:-4px;
-    color:white;
-    text-shadow:
-        0 0 8px rgba(255,255,255,.6),
-        0 0 25px rgba(0,255,157,.45),
-        0 0 60px rgba(0,255,157,.2);
-}
+.logo{
 
-.hero h1 span{
-    color:#00ff9d;
-}
+    font-size:29px;
 
-.hero h2{
-    margin-top:25px;
-    min-height:32px;
-    font-size:20px;
-    color:#9affdf;
-    font-family:monospace;
-}
-
-.cursor{
-    display:inline-block;
-    width:8px;
-    height:22px;
-    background:#00ff9d;
-    margin-left:5px;
-    animation:blink .7s infinite;
-}
-
-@keyframes blink{
-    50%{opacity:0;}
-}
-
-.hero p{
-    max-width:680px;
-    margin:25px auto;
-    line-height:1.8;
-    color:#b8cccc;
-    font-size:16px;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:14px 30px;
-    border:1px solid #00ff9d;
-    border-radius:5px;
-    color:#00ff9d;
-    text-decoration:none;
     font-weight:bold;
-    background:rgba(0,255,157,.06);
-    box-shadow:0 0 20px rgba(0,255,157,.12);
+
+    color:#00eaff;
+
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #00eaff;
+}
+
+
+nav ul{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:30px;
+}
+
+
+nav a{
+
+    color:#eee;
+
+    text-decoration:none;
+
+    font-size:15px;
+
     transition:.3s;
 }
 
-.btn:hover{
-    background:#00ff9d;
-    color:#00130d;
-    box-shadow:0 0 30px #00ff9d;
-    transform:translateY(-3px);
+
+nav a:hover{
+
+    color:#ff39c8;
+
+    text-shadow:
+        0 0 10px #ff39c8,
+        0 0 20px #ff39c8;
 }
 
-/* ================= SECTION ================= */
 
-section{
-    min-height:100vh;
-    padding:110px 8%;
-    position:relative;
-    background:rgba(2,7,8,.9);
-}
+/* =========================
+   HERO CONTENT
+========================= */
 
-.title{
-    text-align:center;
-    font-size:42px;
-    margin-bottom:55px;
-    color:white;
-}
+.content{
 
-.title span{
-    color:#00ff9d;
-    text-shadow:0 0 15px #00ff9d;
-}
+    min-height:
+        calc(100vh - 85px);
 
-/* ================= ABOUT ================= */
-
-.about{
     max-width:850px;
-    margin:auto;
-    text-align:center;
-}
 
-.about p{
-    color:#b9caca;
-    line-height:2;
-    font-size:17px;
-}
+    padding:
+        80px 8%;
 
-/* ================= SKILLS ================= */
+    display:flex;
 
-.skills-grid{
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-}
+    flex-direction:column;
 
-.skill-card{
+    justify-content:center;
+
     position:relative;
-    padding:35px;
-    min-height:190px;
-    border:1px solid rgba(0,255,157,.25);
-    background:rgba(0,255,157,.035);
-    border-radius:15px;
-    overflow:hidden;
-    transition:.4s;
+
+    z-index:5;
 }
 
-.skill-card::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:2px;
-    left:-100%;
-    top:0;
-    background:#00ff9d;
-    box-shadow:0 0 15px #00ff9d;
-    transition:.5s;
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal{
+
+    width:max-content;
+
+    padding:
+        13px 22px;
+
+    margin-bottom:35px;
+
+    border:
+        1px solid
+        #00eaff;
+
+    border-radius:30px;
+
+    color:#00eaff;
+
+    background:
+        rgba(0,0,0,.35);
+
+    box-shadow:
+        0 0 15px
+        rgba(0,234,255,.40);
+
+    font-family:monospace;
 }
 
-.skill-card:hover::before{
-    left:0;
-}
 
-.skill-card:hover{
-    transform:translateY(-8px);
-    border-color:#00ff9d;
-    box-shadow:0 0 30px rgba(0,255,157,.12);
-}
+/* =========================
+   NAME
+========================= */
 
-.skill-icon{
-    font-size:40px;
-    margin-bottom:15px;
-}
+h1{
 
-.skill-card h3{
-    color:#00ff9d;
-    margin-bottom:10px;
-}
+    font-size:
+        clamp(55px,9vw,105px);
 
-.skill-card p{
-    color:#9eb2b2;
-    line-height:1.6;
-}
+    line-height:.9;
 
-/* ================= ACHIEVEMENT ================= */
-
-.achievement{
-    max-width:800px;
-    margin:auto;
-    text-align:center;
-    padding:45px;
-    border:1px solid rgba(0,255,157,.25);
-    background:rgba(0,255,157,.04);
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(0,255,157,.05);
-}
-
-.achievement h3{
-    font-size:28px;
-    color:#00ff9d;
-    margin-bottom:15px;
-}
-
-.achievement p{
-    color:#b9caca;
-    line-height:1.8;
-}
-
-/* ================= PROJECTS ================= */
-
-.projects{
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
-}
-
-.project{
-    padding:30px;
-    border:1px solid rgba(0,255,157,.2);
-    background:rgba(0,0,0,.35);
-    border-radius:15px;
-    transition:.4s;
-}
-
-.project:hover{
-    transform:translateY(-7px);
-    border-color:#00ff9d;
-    box-shadow:0 0 25px rgba(0,255,157,.1);
-}
-
-.project h3{
-    color:#00ff9d;
-    margin-bottom:12px;
-}
-
-.project p{
-    color:#9eb2b2;
-    line-height:1.7;
-}
-
-/* ================= CONTACT ================= */
-
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-}
-
-.contact-box p{
-    color:#a9bebe;
     margin-bottom:30px;
 }
 
-.socials{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+
+.first-name{
+
+    color:white;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,255,255,.35);
 }
 
-.socials a{
+
+.last-name{
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #00eaff,
+            #477bff,
+            #9b5cff,
+            #ff39c8,
+            #ff7a18,
+            #00eaff
+        );
+
+    background-size:400%;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        gradientMove
+        6s
+        linear
+        infinite;
+}
+
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0%;
+    }
+
+    50%{
+        background-position:100%;
+    }
+
+    100%{
+        background-position:0%;
+    }
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h2{
+
+    font-size:32px;
+
+    margin-bottom:22px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #00eaff,
+            #8b63ff,
+            #ff39c8,
+            #ff9d3d
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description{
+
+    max-width:650px;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    color:#d8e0eb;
+
+    margin-bottom:35px;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0,0,0,.8);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+
+    width:max-content;
+
+    padding:
+        16px 30px;
+
+    border:
+        1px solid
+        #00eaff;
+
+    border-radius:10px;
+
+    color:white;
+
     text-decoration:none;
-    color:#dffff5;
-    border:1px solid rgba(0,255,157,.3);
-    padding:13px 20px;
-    border-radius:8px;
+
+    font-weight:bold;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,234,255,.12),
+            rgba(123,92,255,.15),
+            rgba(255,57,200,.12)
+        );
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,234,255,.25);
+
     transition:.3s;
 }
 
-.socials a:hover{
-    color:#00130d;
-    background:#00ff9d;
-    box-shadow:0 0 20px #00ff9d;
+
+.btn:hover{
+
+    transform:
+        translateY(-5px);
+
+    border-color:#ff39c8;
+
+    box-shadow:
+
+        0 0 25px
+        #00eaff88,
+
+        0 0 45px
+        #ff39c866;
 }
 
-/* ================= FOOTER ================= */
 
-footer{
+/* =========================
+   FLOATING CODE BOX
+========================= */
+
+.code-box{
+
+    position:absolute;
+
+    right:7%;
+
+    bottom:9%;
+
+    width:310px;
+
     padding:25px;
-    text-align:center;
-    color:#637878;
-    background:#010303;
-    border-top:1px solid rgba(0,255,157,.1);
+
+    z-index:5;
+
+    border-radius:16px;
+
+    background:
+        rgba(2,5,15,.72);
+
+    backdrop-filter:blur(12px);
+
+    border:
+        1px solid
+        rgba(123,92,255,.60);
+
+    box-shadow:
+        0 0 30px
+        rgba(123,92,255,.25);
+
+    font-family:monospace;
+
+    line-height:2;
+
+    animation:
+        floating
+        4s
+        ease-in-out
+        infinite;
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:700px){
+.code-title{
+
+    color:white;
+
+    margin-bottom:8px;
+}
+
+
+.cyan{
+    color:#00eaff;
+}
+
+.purple{
+    color:#9b6cff;
+}
+
+.pink{
+    color:#ff39c8;
+}
+
+.orange{
+    color:#ff9d3d;
+}
+
+.blue{
+    color:#4d8dff;
+}
+
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-14px);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
 
     nav{
-        padding:16px 5%;
+
+        padding:0 5%;
     }
+
 
     nav ul{
-        gap:12px;
+
+        display:none;
     }
 
-    nav ul li a{
-        font-size:11px;
+
+    .hero{
+
+        background-position:
+            65% center;
+
+        background-attachment:
+            scroll;
     }
 
-    .hero h1{
-        font-size:55px;
-        letter-spacing:-2px;
+
+    .content{
+
+        padding:
+            65px 7%
+            100px;
     }
 
-    .hacker-image{
-        width:95vw;
-        height:650px;
-        opacity:.4;
+
+    h1{
+
+        font-size:60px;
     }
 
-    .skills-grid,
-    .projects{
-        grid-template-columns:1fr;
+
+    h2{
+
+        font-size:26px;
     }
 
-    section{
-        padding:90px 6%;
+
+    .description{
+
+        font-size:17px;
+    }
+
+
+    .code-box{
+
+        display:none;
     }
 }
+
+
+@media(max-width:450px){
+
+    h1{
+
+        font-size:52px;
+    }
+
+
+    .terminal{
+
+        font-size:12px;
+
+        padding:
+            11px 16px;
+    }
+
+
+    .description{
+
+        font-size:16px;
+    }
+
+
+    .btn{
+
+        padding:
+            14px 23px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= NAVBAR ================= -->
 
-<nav>
-    <div class="logo">
-        <span>&lt;</span>SY<span>/&gt;</span>
-    </div>
-
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+<section class="hero">
 
 
-<!-- ================= HOME ================= -->
+    <!-- NAVBAR -->
 
-<section class="hero" id="home">
+    <nav>
 
-    <div class="hacker-image">
-        <img src="hacker-girl.jpg" alt="Dark Ethical Hacker">
-    </div>
+        <div class="logo">
 
-    <div class="hero-overlay"></div>
+            &lt;SY/&gt;
 
-    <div class="hero-content">
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="#home">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <div
+        class="content"
+        id="home"
+    >
+
 
         <div class="terminal">
-            &gt; system.init() // cybersecurity mode
+
+            &gt; system.init()
+            // cybersecurity mode
+
         </div>
+
+
 
         <h1>
-            Sanjida <span>Yeasmin</span>
+
+            <span class="first-name">
+
+                Sanjida
+
+            </span>
+
+
+            <br>
+
+
+            <span class="last-name">
+
+                Yeasmin
+
+            </span>
+
         </h1>
 
+
+
         <h2>
-            <span id="typing"></span><span class="cursor"></span>
+
+            Cybersecurity Enthusiast
+
         </h2>
 
-        <p>
-            Cybersecurity enthusiast focused on ethical hacking,
-            programming and learning how digital systems can be
+
+
+        <p class="description">
+
+            Cybersecurity enthusiast focused on
+            ethical hacking, programming and
+            exploring how digital systems can be
             protected from real-world threats.
+
         </p>
 
-        <a href="#about" class="btn">
+
+
+        <a
+            href="#about"
+            class="btn"
+        >
+
             Explore My Profile →
+
         </a>
 
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section id="about">
-
-    <h2 class="title">
-        About <span>Me</span>
-    </h2>
-
-    <div class="about">
-
-        <p>
-            I am Sanjida Yeasmin, a cybersecurity learner with a strong
-            interest in ethical hacking and programming. I am currently
-            developing my skills in cybersecurity, Python and C while
-            exploring how security technologies work in real-world
-            environments.
-        </p>
 
     </div>
 
-</section>
 
 
-<!-- ================= SKILLS ================= -->
+    <!-- CODE BOX -->
 
-<section id="skills">
+    <div class="code-box">
 
-    <h2 class="title">
-        My <span>Skills</span>
-    </h2>
 
-    <div class="skills-grid">
+        <div class="code-title">
 
-        <div class="skill-card">
-            <div class="skill-icon">🛡️</div>
-            <h3>Cybersecurity</h3>
-            <p>
-                Learning security concepts, threats, vulnerabilities,
-                system protection and cybersecurity fundamentals.
-            </p>
+            &gt; system.status
+
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">💻</div>
-            <h3>Ethical Hacking</h3>
-            <p>
-                Exploring ethical hacking concepts, reconnaissance,
-                security testing and defensive security practices.
-            </p>
+
+        <div class="cyan">
+
+            &gt; ethical_hacking
+
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">🐍</div>
-            <h3>Python</h3>
-            <p>
-                Learning Python programming for automation,
-                cybersecurity tools and problem solving.
-            </p>
+
+        <div class="purple">
+
+            &gt; cybersecurity
+
         </div>
 
-        <div class="skill-card">
-            <div class="skill-icon">⚙️</div>
-            <h3>C Programming</h3>
-            <p>
-                Building programming fundamentals and understanding
-                how low-level concepts work through C.
-            </p>
+
+        <div class="pink">
+
+            &gt; programming
+
         </div>
+
+
+        <div class="orange">
+
+            &gt; AI &amp; Automation
+
+        </div>
+
+
+        <div class="blue">
+
+            &gt; system_protected ✓
+
+        </div>
+
 
     </div>
 
-</section>
-
-
-<!-- ================= ACHIEVEMENT ================= -->
-
-<section>
-
-    <h2 class="title">
-        My <span>Achievement</span>
-    </h2>
-
-    <div class="achievement">
-
-        <h3>🏆 Cumilla Programming & Robotics</h3>
-
-        <p>
-            Participated in Cumilla Programming & Robotics,
-            gaining experience in programming, problem solving
-            and technology-focused activities.
-        </p>
-
-    </div>
 
 </section>
 
-
-<!-- ================= PROJECTS ================= -->
-
-<section id="projects">
-
-    <h2 class="title">
-        My <span>Projects</span>
-    </h2>
-
-    <div class="projects">
-
-        <div class="project">
-            <h3>🔐 Cybersecurity Learning Lab</h3>
-            <p>
-                A personal learning environment for studying
-                cybersecurity and ethical hacking concepts.
-            </p>
-        </div>
-
-        <div class="project">
-            <h3>🐍 Python Practice</h3>
-            <p>
-                Small Python programs created while learning
-                programming and automation fundamentals.
-            </p>
-        </div>
-
-        <div class="project">
-            <h3>⚙️ C Programming</h3>
-            <p>
-                Programming exercises focused on logic,
-                algorithms and core C programming concepts.
-            </p>
-        </div>
-
-        <div class="project">
-            <h3>🌐 Portfolio Website</h3>
-            <p>
-                This animated cybersecurity portfolio designed
-                with a dark hacker-inspired interface.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact">
-
-    <h2 class="title">
-        Contact <span>Me</span>
-    </h2>
-
-    <div class="contact-box">
-
-        <p>
-            Interested in cybersecurity, technology and learning new skills?
-            You can connect with me here.
-        </p>
-
-        <div class="socials">
-
-            <a
-                href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
-                target="_blank">
-                LinkedIn
-            </a>
-
-            <a
-                href="mailto:sanjidayesmin6095@gmail.com">
-                Gmail
-            </a>
-
-            <a
-                href="https://www.facebook.com/profile.php?id=61574898345085"
-                target="_blank">
-                Facebook
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-    © 2026 Sanjida Yeasmin | Cybersecurity Portfolio
-</footer>
-
-
-<!-- ================= TYPING SCRIPT ================= -->
-
-<script>
-
-const words = [
-    "Cybersecurity Enthusiast",
-    "Ethical Hacking Learner",
-    "Python Learner",
-    "C Programmer"
-];
-
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-const typing = document.getElementById("typing");
-
-function typeEffect(){
-
-    const currentWord = words[wordIndex];
-
-    if(!deleting){
-
-        typing.textContent =
-            currentWord.substring(0,charIndex + 1);
-
-        charIndex++;
-
-        if(charIndex === currentWord.length){
-
-            deleting = true;
-
-            setTimeout(typeEffect,1400);
-
-            return;
-        }
-
-    }else{
-
-        typing.textContent =
-            currentWord.substring(0,charIndex - 1);
-
-        charIndex--;
-
-        if(charIndex === 0){
-
-            deleting = false;
-
-            wordIndex++;
-
-            if(wordIndex === words.length){
-                wordIndex = 0;
-            }
-
-        }
-    }
-
-    setTimeout(typeEffect, deleting ? 45 : 85);
-}
-
-typeEffect();
-
-</script>
 
 </body>
 </html>
-```
