@@ -1,580 +1,646 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sanjida Yeasmin | Cybersecurity</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#020208;
-    color:#fff;
-    font-family:"Courier New",monospace;
-    overflow-x:hidden;
-    perspective:1200px;
-}
-
-/* ================= BACKGROUND ================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-5;
-
-    background:
-        radial-gradient(circle at 20% 30%,rgba(0,200,255,.14),transparent 28%),
-        radial-gradient(circle at 80% 70%,rgba(150,50,255,.15),transparent 30%),
-        linear-gradient(135deg,#010106,#080816,#020207);
-}
-
-.grid{
-    position:fixed;
-    inset:-50%;
-    z-index:-4;
-
-    background-image:
-        linear-gradient(rgba(0,200,255,.06) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(150,50,255,.06) 1px,transparent 1px);
-
-    background-size:55px 55px;
-
-    transform:
-        perspective(500px)
-        rotateX(65deg);
-
-    animation:gridMove 8s linear infinite;
-}
-
-@keyframes gridMove{
-    from{
-        background-position:0 0;
-    }
-
-    to{
-        background-position:0 55px;
-    }
-}
-
-/* ================= PARTICLES ================= */
-
-.particles span{
-    position:fixed;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#00d9ff;
-
-    box-shadow:0 0 15px #00d9ff;
-
-    animation:particle 6s infinite ease-in-out;
-
-    z-index:-2;
-}
-
-.particles span:nth-child(1){
-    left:10%;
-    top:20%;
-}
-
-.particles span:nth-child(2){
-    left:30%;
-    top:70%;
-    animation-delay:1s;
-}
-
-.particles span:nth-child(3){
-    left:70%;
-    top:20%;
-    animation-delay:2s;
-}
-
-.particles span:nth-child(4){
-    left:90%;
-    top:65%;
-    animation-delay:3s;
-}
-
-.particles span:nth-child(5){
-    left:50%;
-    top:40%;
-    animation-delay:4s;
-}
-
-@keyframes particle{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.2;
-    }
-
-    50%{
-        transform:translateY(-80px);
-        opacity:1;
-    }
-}
-
-/* ================= NAV ================= */
-
-nav{
-    position:fixed;
-
-    top:20px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:90%;
-    max-width:1100px;
-
-    padding:16px 25px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    background:rgba(5,5,15,.72);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(0,210,255,.35);
-
-    border-radius:10px;
-
-    box-shadow:
-        0 0 30px rgba(0,210,255,.08);
-
-    z-index:100;
-}
-
-.logo{
-    color:#00d9ff;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-}
-
-nav a{
-    color:#aaa;
-
-    text-decoration:none;
-
-    margin-left:25px;
-
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#00d9ff;
-
-    text-shadow:
-        0 0 15px #00d9ff;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    min-height:100vh;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    padding:100px 8%;
-}
-
-.hero-text{
-    width:50%;
-
-    z-index:10;
-}
-
-.system{
-    color:#00d9ff;
-
-    font-size:13px;
-
-    letter-spacing:5px;
-
-    margin-bottom:20px;
-
-    animation:blink 2s infinite;
-}
-
-@keyframes blink{
-
-    50%{
-        opacity:.4;
-    }
-}
-
-h1{
-    font-size:clamp(50px,7vw,100px);
-
-    line-height:.9;
-
-    letter-spacing:-5px;
-}
-
-.name{
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #00d9ff,
-            #8d5cff,
-            #ffffff
-        );
-
-    background-size:300%;
-
-    -webkit-background-clip:text;
-
-    color:transparent;
-
-    animation:nameMove 5s linear infinite;
-
-    text-shadow:
-        0 0 30px rgba(0,210,255,.2);
-}
-
-@keyframes nameMove{
-
-    from{
-        background-position:0%;
-    }
-
-    to{
-        background-position:300%;
-    }
-}
-
-.subtitle{
-
-    margin-top:30px;
-
-    color:#aaa;
-
-    font-size:17px;
-
-    line-height:1.8;
-}
-
-.cursor{
-
-    color:#00d9ff;
-
-    animation:cursor .7s infinite;
-}
-
-@keyframes cursor{
-
-    50%{
-        opacity:0;
-    }
-}
-
-/* ================= HACKER ================= */
-
-.hacker-area{
-
-    position:absolute;
-
-    right:5%;
-
-    top:50%;
-
-    width:520px;
-
-    height:520px;
-
-    transform:
-        translateY(-50%)
-        perspective(900px);
-
-    transform-style:preserve-3d;
-
-    animation:hackerFloat 5s ease-in-out infinite;
-}
-
-@keyframes hackerFloat{
-
-    0%,100%{
-        transform:
-            translateY(-50%)
-            rotateY(-4deg);
-    }
-
-    50%{
-        transform:
-            translateY(calc(-50% - 15px))
-            rotateY(5deg);
-    }
-}
-
-.hacker-glow{
-
-    position:absolute;
-
-    width:400px;
-    height:400px;
-
-    left:60px;
-    top:40px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,210,255,.16),
-            rgba(120,50,255,.08),
-            transparent 70%
-        );
-
-    filter:blur(10px);
-}
-
-/* ================= GIRL ================= */
-
-.hacker{
-
-    position:absolute;
-
-    left:145px;
-
-    top:75px;
-
-    width:230px;
-
-    height:330px;
-
-    transform:translateZ(100px);
-
-    transform-style:preserve-3d;
-}
-
-.hair{
-
-    position:absolute;
-
-    left:52px;
-
-    top:5px;
-
-    width:125px;
-
-    height:145px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #090912,
-            #151525,
-            #05050b
-        );
-
-    border-radius:
-        55px 65px 45px 55px;
-
-    box-shadow:
-        0 0 25px rgba(120,70,255,.35);
-}
-
-.face{
-
-    position:absolute;
-
-    left:72px;
-
-    top:35px;
-
-    width:85px;
-
-    height:105px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #252536,
-            #090910
-        );
-
-    border-radius:
-        45% 45% 48% 48%;
-
-    z-index:2;
-}
-
-.hood{
-
-    position:absolute;
-
-    left:30px;
-
-    top:0;
-
-    width:170px;
-
-    height:190px;
-
-    border:3px solid #161626;
-
-    border-radius:
-        90px 90px 40px 40px;
-
-    box-shadow:
-        0 0 35px rgba(0,210,255,.12);
-
-    z-index:3;
-}
-
-.visor{
-
-    position:absolute;
-
-    left:82px;
-
-    top:82px;
-
-    width:65px;
-
-    height:13px;
-
-    background:#020207;
-
-    border:1px solid #00d9ff;
-
-    box-shadow:
-        0 0 12px #00d9ff;
-
-    z-index:5;
-}
-
-.chest{
-
-    position:absolute;
-
-    left:35px;
-
-    top:145px;
-
-    width:165px;
-
-    height:185px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #11111e,
-            #040408
-        );
-
-    clip-path:
-        polygon(
-            25% 0,
-            75% 0,
-            100% 100%,
-            0 100%
-        );
-
-    border:1px solid #222238;
-
-    box-shadow:
-        0 0 35px rgba(120,50,255,.15);
-}
-
-/* ================= LAPTOP ================= */
-
-.laptop{
-
-    position:absolute;
-
-    left:80px;
-
-    top:290px;
-
-    width:350px;
-
-    height:180px;
-
-    transform:
-        translateZ(180px)
-        rotateX(-5deg);
-
-    transform-style:preserve-3d;
-}
-
-.screen{
-
-    width:265px;
-
-    height:155px;
-
-    margin:auto;
-
-    padding:15px;
-
-    background:#02050b;
-
-    border:5px solid #151522;
-
-    border-radius:
-        8px 8px 2px 2px;
-
-    box-shadow:
-        0 0 25px rgba(0,210,255,.5),
-        0 0 70px rgba(0,210,255,.12);
-
-    overflow:hidden;
-
-    color:#00d9ff;
-
-    font-size:10px;
-
-    transform:
-        translateZ(15px);
-}
-
-.screen p{
-    margin:5px 0;
-}
-
-.blue{
-    color:#00d9ff;
-}
-
-.purple{
-    color:#a45cff;
-}
-
-.white{
-    color:#ddd;
-}
-
-.keyboard{
-
-    width:350px;
-
-    height:45px;
-
-    background:
-        linear-gradient(
-            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sanjida Yeasmin | Cybersecurity Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background glow */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 255, 170, 0.08);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 10%;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: rgba(0, 150, 255, 0.07);
+            filter: blur(120px);
+            border-radius: 50%;
+            bottom: 5%;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,255,170,0.15);
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #00ffae;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00ffae;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .terminal {
+            color: #00ffae;
+            font-family: monospace;
+            font-size: 18px;
+            margin-bottom: 20px;
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #00ffae;
+            text-shadow: 0 0 25px rgba(0,255,170,0.5);
+        }
+
+        .typing {
+            font-size: clamp(20px, 4vw, 32px);
+            color: #aaa;
+            min-height: 45px;
+        }
+
+        .hero p {
+            color: #888;
+            max-width: 650px;
+            margin: 25px auto;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 28px;
+            border: 1px solid #00ffae;
+            border-radius: 30px;
+            color: #00ffae;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00ffae;
+            color: #000;
+            box-shadow: 0 0 25px rgba(0,255,170,0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 8%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .title span {
+            color: #00ffae;
+        }
+
+        /* About */
+        .about {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about p {
+            color: #aaa;
+            line-height: 1.9;
+            font-size: 17px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .skill-card {
+            padding: 35px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(0,255,170,0.15);
+            border-radius: 18px;
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #00ffae;
+            box-shadow: 0 0 30px rgba(0,255,170,0.12);
+        }
+
+        .skill-icon {
+            font-size: 45px;
+            margin-bottom: 18px;
+        }
+
+        .skill-card h3 {
+            color: #00ffae;
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .projects {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .project-card {
+            padding: 35px;
+            margin-bottom: 20px;
+            border-left: 3px solid #00ffae;
+            background: rgba(255,255,255,0.025);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateX(8px);
+        }
+
+        .project-card h3 {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* Achievement */
+        .achievement {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid rgba(0,255,170,0.2);
+            border-radius: 20px;
+            background: rgba(255,255,255,0.025);
+        }
+
+        .achievement h3 {
+            color: #00ffae;
+            margin-bottom: 15px;
+        }
+
+        .achievement p {
+            color: #999;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #ddd;
+            border: 1px solid #333;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            color: #00ffae;
+            border-color: #00ffae;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            border-top: 1px solid #151515;
+        }
+
+        /* Scroll animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">&lt;SANJIDA/&gt;</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO / FIRST PAGE -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="terminal">
+                &gt; system.init();_
+            </div>
+
+            <h1>
+                Sanjida <span>Yeasmin</span>
+            </h1>
+
+            <div class="typing" id="typing"></div>
+
+            <p>
+                Exploring cybersecurity, ethical hacking and programming.
+                Building skills, learning continuously and working toward
+                becoming a cybersecurity professional.
+            </p>
+
+            <a href="#about" class="btn">
+                Explore My Portfolio
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+
+        <h2 class="title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about">
+
+            <p>
+                I am Sanjida Yeasmin, a technology enthusiast interested in
+                cybersecurity and ethical hacking. I am currently developing
+                my skills in Python and C while learning the fundamentals of
+                cybersecurity. My goal is to keep learning, practice through
+                projects and grow as a cybersecurity professional.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+
+        <h2 class="title">
+            My <span>Skills</span>
+        </h2>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="skill-icon">🔐</div>
+                <h3>Cybersecurity</h3>
+                <p>
+                    Learning cybersecurity fundamentals, security concepts
+                    and defensive techniques.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🛡️</div>
+                <h3>Ethical Hacking</h3>
+                <p>
+                    Exploring ethical hacking, penetration testing concepts
+                    and security testing.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+                <p>
+                    Learning Python programming and building small projects
+                    to improve problem-solving skills.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>C</h3>
+                <p>
+                    Learning C programming fundamentals, logic and
+                    problem-solving.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+
+        <h2 class="title">
+            My <span>Projects</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project-card">
+                <h3>Cybersecurity Learning Lab</h3>
+                <p>
+                    A personal learning environment for practicing
+                    cybersecurity and ethical hacking concepts.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Python Projects</h3>
+                <p>
+                    Small Python projects created while learning programming,
+                    automation and logical problem solving.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>
+                    This animated portfolio website created to showcase my
+                    technology journey and skills.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACHIEVEMENT -->
+    <section class="reveal">
+
+        <h2 class="title">
+            <span>Achievement</span>
+        </h2>
+
+        <div class="achievement">
+
+            <h3>🏆 Cumilla Programming Olympiad 2022</h3>
+
+            <p>
+                Selected for Cumilla Programming Olympiad 2022,
+                an experience that increased my interest in programming
+                and technology.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact reveal">
+
+        <h2 class="title">
+            Contact <span>Me</span>
+        </h2>
+
+        <p>
+            Interested in technology, cybersecurity and learning new skills.
+        </p>
+
+        <div class="links">
+
+            <a href="mailto:sanjidayesmin6095@gmail.com">
+                📧 Gmail
+            </a>
+
+            <a href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
+               target="_blank">
+                💼 LinkedIn
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61574898345085"
+               target="_blank">
+                📘 Facebook
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Sanjida Yeasmin | Cybersecurity Portfolio
+    </footer>
+
+
+    <script>
+
+        /* Typing animation */
+
+        const texts = [
+            "Cybersecurity Enthusiast",
+            "Ethical Hacking Learner",
+            "Python Learner",
+            "C Programmer"
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+
+            const typing = document.getElementById("typing");
+            const current = texts[textIndex];
+
+            if (!deleting) {
+                typing.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === current.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1500);
+                    return;
+                }
+
+            } else {
+
+                typing.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    deleting = false;
+                    textIndex++;
+
+                    if (textIndex >= texts.length) {
+                        textIndex = 0;
+                    }
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 50 : 90);
+        }
+
+        typeEffect();
+
+
+        /* Scroll reveal */
+
+        function revealOnScroll() {
+
+            const reveals = document.querySelectorAll(".reveal");
+
+            reveals.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add("active");
+                }
+
+            });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+    </script>
+
+</body>
+</html>
+```
