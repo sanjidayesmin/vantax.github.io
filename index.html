@@ -1,463 +1,617 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sanjida Yeasmin | Cybersecurity Portfolio</title>
+  <title>Sanjida Yeasmin | Cybersecurity</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-html {
-    scroll-behavior: smooth;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-    background: #050505;
-    color: white;
-    font-family: Arial, sans-serif;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 18px 8%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-}
+    body {
+      background: #020607;
+      color: white;
+      font-family: "Fira Code", monospace;
+      overflow-x: hidden;
+    }
 
-.logo {
-    color: #00ffb3;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-}
-
-nav a:hover {
-    color: #00ffb3;
-}
-
-/* HERO */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* EYE IMAGE BEHIND NAME */
-.eye {
-    position: absolute;
-    width: min(850px, 90vw);
-    height: 500px;
-
-    background-image: url("eye-look.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: 0.55;
-    filter: brightness(0.7) contrast(1.2);
-}
-
-/* DARK OVERLAY */
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle,
-        transparent 15%,
-        rgba(0,0,0,0.45) 55%,
-        #050505 90%
-    );
-}
-
-.hero-content {
-    position: relative;
-    z-index: 5;
-}
-
-.tag {
-    color: #00ffb3;
-    letter-spacing: 5px;
-    font-size: 13px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: clamp(45px, 8vw, 95px);
-    letter-spacing: 5px;
-    text-shadow: 0 0 25px #00ffb3;
-}
-
-h1 span {
-    color: #00ffb3;
-}
-
-.hero p {
-    margin-top: 20px;
-    color: #ccc;
-    font-size: 19px;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 35px;
-    padding: 13px 28px;
-    border: 1px solid #00ffb3;
-    color: #00ffb3;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: .3s;
-}
-
-.btn:hover {
-    background: #00ffb3;
-    color: black;
-    box-shadow: 0 0 30px #00ffb3;
-}
-
-/* SECTIONS */
-section:not(.hero) {
-    padding: 90px 10%;
-}
-
-.title {
-    text-align: center;
-    color: #00ffb3;
-    font-size: 35px;
-    margin-bottom: 40px;
-}
-
-/* ABOUT */
-.about-text {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-    color: #bbb;
-    line-height: 1.8;
-    font-size: 17px;
-}
-
-/* CARDS */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #0c0c0c;
-    border: 1px solid #222;
-    padding: 28px;
-    border-radius: 12px;
-    transition: .3s;
-}
-
-.card:hover {
-    border-color: #00ffb3;
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0,255,179,.15);
-}
-
-.card h3 {
-    color: #00ffb3;
-    margin-bottom: 15px;
-}
-
-.card p {
-    color: #aaa;
-    line-height: 1.6;
-}
-
-/* SKILLS */
-.skills {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.skill {
-    padding: 12px 22px;
-    border: 1px solid #00ffb3;
-    border-radius: 25px;
-    color: #00ffb3;
-}
-
-/* CONTACT */
-.contact {
-    text-align: center;
-}
-
-.contact a {
-    color: #00ffb3;
-    text-decoration: none;
-}
-
-.contact p {
-    margin: 15px;
-    color: #bbb;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #020202;
-    color: #666;
-}
-
-/* MOBILE */
-@media(max-width:600px) {
+    /* ================= NAVBAR ================= */
 
     nav {
-        padding: 15px;
+      height: 102px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4.5%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+
+      background: rgba(1, 7, 8, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 255, 220, 0.25);
     }
 
-    nav a {
-        margin-left: 8px;
-        font-size: 12px;
+    .logo {
+      color: #00ffe0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      text-shadow: 0 0 15px #00ffe0;
     }
 
-    .eye {
-        width: 100%;
-        height: 400px;
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      list-style: none;
     }
+
+    .nav-links a {
+      color: #c5d4d9;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #00ffe0;
+      text-shadow: 0 0 12px #00ffe0;
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      width: 45px;
+      height: 3px;
+      background: #00ffe0;
+      left: 0;
+      bottom: -30px;
+      box-shadow: 0 0 10px #00ffe0;
+    }
+
+    .status {
+      border: 1px solid #00a98f;
+      border-radius: 25px;
+      padding: 9px 18px;
+      color: #00ffe0;
+      font-size: 14px;
+      box-shadow: 0 0 12px rgba(0,255,220,.15);
+    }
+
+    .status span {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: #00ffe0;
+      border-radius: 50%;
+      margin-right: 9px;
+      box-shadow: 0 0 10px #00ffe0;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 130px 6% 60px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(1,8,9,.98) 0%,
+          rgba(1,8,9,.88) 33%,
+          rgba(1,8,9,.48) 58%,
+          rgba(1,8,9,.15) 100%
+        ),
+        url("cyber-eye.png");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 75%,
+          rgba(0,255,220,.08)
+        );
+    }
+
+    .content {
+      position: relative;
+      z-index: 5;
+      max-width: 650px;
+    }
+
+    .hello {
+      color: #00ffe0;
+      font-size: 25px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 12px rgba(0,255,220,.5);
+    }
+
+    .hello::before {
+      content: "> ";
+    }
+
+    h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(60px, 8vw, 110px);
+      line-height: .98;
+      letter-spacing: -4px;
+      margin-bottom: 35px;
+    }
+
+    h1 .first {
+      color: #f5f8f9;
+      display: block;
+      text-shadow: 0 0 25px rgba(255,255,255,.15);
+    }
+
+    h1 .last {
+      color: #00ffe0;
+      display: block;
+      text-shadow:
+        0 0 10px #00ffe0,
+        0 0 25px rgba(0,255,220,.55);
+    }
+
+    .typing {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #9ffdf0;
+      font-size: 27px;
+      font-weight: 600;
+      margin-bottom: 35px;
+    }
+
+    .cursor {
+      width: 5px;
+      height: 32px;
+      background: #00ffe0;
+      box-shadow: 0 0 12px #00ffe0;
+      animation: blink .8s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .description {
+      color: #d0e0e5;
+      font-size: 18px;
+      line-height: 1.9;
+      max-width: 540px;
+      margin-bottom: 45px;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #00ffe0;
+      border: 2px solid #00ffe0;
+      padding: 18px 42px;
+      font-size: 18px;
+      font-weight: 600;
+      position: relative;
+      transition: .3s;
+      box-shadow:
+        0 0 10px rgba(0,255,220,.2),
+        inset 0 0 10px rgba(0,255,220,.05);
+    }
+
+    .btn:hover {
+      color: #00110f;
+      background: #00ffe0;
+      box-shadow:
+        0 0 20px #00ffe0,
+        0 0 50px rgba(0,255,220,.4);
+      transform: translateY(-3px);
+    }
+
+    /* ================= SOCIAL ================= */
+
+    .social {
+      display: flex;
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .social a {
+      width: 56px;
+      height: 56px;
+      border: 1px solid #00bda7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #00ffe0;
+      text-decoration: none;
+      font-size: 18px;
+      transition: .3s;
+    }
+
+    .social a:hover {
+      background: #00ffe0;
+      color: #00110f;
+      box-shadow: 0 0 25px #00ffe0;
+      transform: translateY(-5px);
+    }
+
+    /* ================= CODE DECORATION ================= */
+
+    .code-note {
+      position: absolute;
+      right: 7%;
+      bottom: 16%;
+      color: #75d9e5;
+      font-size: 15px;
+      line-height: 1.7;
+      z-index: 5;
+      text-shadow: 0 0 8px rgba(0,255,255,.4);
+    }
+
+    /* ================= BOTTOM TERMINAL ================= */
+
+    .terminal-bar {
+      position: absolute;
+      bottom: 25px;
+      left: 13%;
+      width: 40%;
+      min-width: 400px;
+
+      border: 1px solid rgba(0,255,220,.45);
+      padding: 15px 25px;
+
+      color: #00ffe0;
+      background: rgba(0,20,20,.45);
+      box-shadow: 0 0 15px rgba(0,255,220,.08);
+
+      z-index: 10;
+    }
+
+    /* ================= SECTIONS ================= */
 
     section:not(.hero) {
-        padding: 70px 6%;
+      min-height: 100vh;
+      padding: 120px 8%;
+      background: #020607;
+      border-top: 1px solid rgba(0,255,220,.12);
     }
-}
-</style>
-</head>
 
+    .section-title {
+      color: #00ffe0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 42px;
+      margin-bottom: 35px;
+      text-shadow: 0 0 15px rgba(0,255,220,.5);
+    }
+
+    .section-text {
+      max-width: 800px;
+      color: #c6d6da;
+      line-height: 2;
+      font-size: 17px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
+
+      nav {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .status {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 140px 25px 80px;
+        background-position: 65% center;
+      }
+
+      .content {
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(55px, 15vw, 85px);
+      }
+
+      .typing {
+        font-size: 21px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .code-note {
+        display: none;
+      }
+
+      .terminal-bar {
+        left: 25px;
+        width: calc(100% - 50px);
+        min-width: 0;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .status {
+        display: none;
+      }
+
+      .hello {
+        font-size: 19px;
+      }
+
+      h1 {
+        font-size: 54px;
+      }
+
+      .typing {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .social a {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
 
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-    <div class="logo">SY.</div>
+  <!-- ================= NAVBAR ================= -->
 
-    <div>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+  <nav>
+
+    <div class="logo">
+      &lt;SY/&gt;
     </div>
-</nav>
+
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="status">
+      <span></span>
+      Learning Never Stops
+    </div>
+
+  </nav>
 
 
-<!-- HERO -->
-<section class="hero">
+  <!-- ================= HOME ================= -->
 
-    <!-- YOUR EYE LOOK IMAGE -->
-    <div class="eye"></div>
+  <section class="hero" id="home">
 
-    <div class="hero-content">
+    <div class="content">
 
-        <div class="tag">
-            CYBERSECURITY • TECHNOLOGY • AI
-        </div>
+      <div class="hello">
+        Hello, I am
+      </div>
 
-        <h1>
-            SANJIDA <span>YEASMIN</span>
-        </h1>
+      <h1>
+        <span class="first">Sanjida</span>
+        <span class="last">Yeasmin</span>
+      </h1>
 
-        <p>
-            Cybersecurity Learner | Technology Enthusiast | Future Developer
-        </p>
+      <div class="typing">
+        Cybersecurity Enthusiast
+        <span class="cursor"></span>
+      </div>
 
-        <a href="#about" class="btn">
-            EXPLORE MY PORTFOLIO
+      <p class="description">
+        Exploring the digital world, learning cybersecurity,
+        and building a safer tomorrow — one skill at a time.
+      </p>
+
+      <a href="#about" class="btn">
+        &gt; Explore My Portfolio &nbsp; →
+      </a>
+
+
+      <div class="social">
+
+        <a href="#" title="GitHub">
+          ◉
         </a>
 
-    </div>
-</section>
-
-
-<!-- ABOUT -->
-<section id="about">
-
-    <h2 class="title">ABOUT ME</h2>
-
-    <p class="about-text">
-        I am Sanjida Yeasmin, a technology enthusiast currently
-        learning cybersecurity and exploring programming, AI and
-        modern technology. I enjoy learning new skills, solving
-        problems and continuously improving myself through practical
-        learning and projects.
-    </p>
-
-</section>
-
-
-<!-- EDUCATION -->
-<section id="education">
-
-    <h2 class="title">EDUCATION</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>HSC</h3>
-            <p>
-                HSC Complete — 2025
-                <br><br>
-                Cumilla Government Women's College
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Programming</h3>
-            <p>
-                Selected in Cumilla Programming Olympiad 2022.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- EXPERIENCE -->
-<section>
-
-    <h2 class="title">EXPERIENCE & INTERESTS</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>Cybersecurity</h3>
-            <p>
-                Currently learning ethical hacking,
-                cybersecurity fundamentals and practical
-                security skills.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Technology</h3>
-            <p>
-                Interested in programming, artificial
-                intelligence, automation and modern technology.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Communication</h3>
-            <p>
-                Interested in communication, teamwork and
-                developing useful professional skills.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Video Editing</h3>
-            <p>
-                Have basic experience with video editing
-                and creative digital work.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SKILLS -->
-<section id="skills">
-
-    <h2 class="title">SKILLS & LEARNING</h2>
-
-    <div class="skills">
-
-        <div class="skill">Cybersecurity</div>
-        <div class="skill">Ethical Hacking</div>
-        <div class="skill">Python</div>
-        <div class="skill">Programming</div>
-        <div class="skill">AI</div>
-        <div class="skill">Technology</div>
-        <div class="skill">Communication</div>
-        <div class="skill">Teamwork</div>
-        <div class="skill">Video Editing</div>
-
-    </div>
-
-</section>
-
-
-<!-- GOALS -->
-<section>
-
-    <h2 class="title">MY GOAL</h2>
-
-    <p class="about-text">
-        My goal is to build strong skills in cybersecurity,
-        programming and artificial intelligence and eventually
-        work on meaningful technology projects.
-    </p>
-
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-
-    <h2 class="title">CONTACT</h2>
-
-    <p>
-        Email:
-        <a href="mailto:sanjidayesmin6095@gmail.com">
-            sanjidayesmin6095@gmail.com
+        <a href="#" title="LinkedIn">
+          in
         </a>
-    </p>
 
-    <p>
-        LinkedIn:
-        <a href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
-           target="_blank">
-            LinkedIn Profile
+        <a href="#" title="Email">
+          ✉
         </a>
-    </p>
 
-    <p>
-        Facebook:
-        <a href="https://www.facebook.com/profile.php?id=61574898345085"
-           target="_blank">
-            Facebook Profile
+        <a href="#" title="Website">
+          ◎
         </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE CODE -->
+
+    <div class="code-note">
+      // small steps<br>
+      // big dreams<br>
+      // InshaAllah<br>
+      _
+    </div>
+
+
+    <!-- BOTTOM TERMINAL -->
+
+    <div class="terminal-bar">
+      &lt;/&gt; Trust Allah’s plan with patience _
+    </div>
+
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <h2 class="section-title">
+      &gt; About Me
+    </h2>
+
+    <p class="section-text">
+      I am Sanjida Yeasmin, a cybersecurity enthusiast
+      exploring technology, programming and the digital world.
+      I am continuously learning new skills and working toward
+      building a strong future in cybersecurity and technology.
     </p>
 
-</section>
+  </section>
 
 
-<footer>
-    © 2026 Sanjida Yeasmin — Cybersecurity Portfolio
-</footer>
+  <!-- ================= SKILLS ================= -->
 
+  <section id="skills">
+
+    <h2 class="section-title">
+      &gt; Skills
+    </h2>
+
+    <p class="section-text">
+      Cybersecurity • Ethical Hacking • Python • Linux •
+      Networking • Web Development • Problem Solving
+    </p>
+
+  </section>
+
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section id="projects">
+
+    <h2 class="section-title">
+      &gt; Projects
+    </h2>
+
+    <p class="section-text">
+      Cybersecurity labs, programming projects,
+      web projects and future security research.
+    </p>
+
+  </section>
+
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact">
+
+    <h2 class="section-title">
+      &gt; Contact
+    </h2>
+
+    <p class="section-text">
+      Let's connect and build something meaningful
+      with technology.
+    </p>
+
+  </section>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    // Navbar active link
+
+    const links = document.querySelectorAll(".nav-links a");
+
+    links.forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        links.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+
+      });
+
+    });
+
+
+    // Small typing cursor effect
+
+    const cursor = document.querySelector(".cursor");
+
+    setInterval(() => {
+      cursor.style.opacity =
+        cursor.style.opacity === "0" ? "1" : "0";
+    }, 600);
+
+  </script>
 
 </body>
 </html>
-```
