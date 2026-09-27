@@ -1,1 +1,496 @@
-58b865d641abe01ba40f63407859ee597e22e1c3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sanjida Yeasmin | Cybersecurity Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #020606;
+      color: #eafff7;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Background */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 75% 45%, rgba(0,255,170,.12), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(0,200,255,.08), transparent 30%),
+        #020606;
+    }
+
+    .grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: .13;
+      background-image:
+        linear-gradient(rgba(0,255,170,.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,170,.15) 1px, transparent 1px);
+      background-size: 45px 45px;
+      mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    }
+
+    /* Navigation */
+    nav {
+      width: 100%;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      border-bottom: 1px solid rgba(0,255,170,.15);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      color: #00ffae;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px #00ffae;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #b8ccc6;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    nav ul li a:hover {
+      color: #00ffae;
+      text-shadow: 0 0 12px #00ffae;
+    }
+
+    .badge {
+      border: 1px solid #00ffae;
+      color: #00ffae;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      box-shadow: 0 0 15px rgba(0,255,174,.15);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - 75px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 7%;
+      gap: 40px;
+    }
+
+    .hero-left {
+      width: 52%;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .hello {
+      color: #00ffae;
+      font-family: monospace;
+      font-size: 17px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(45px, 7vw, 92px);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: #00ffae;
+      text-shadow:
+        0 0 8px rgba(0,255,174,.8),
+        0 0 35px rgba(0,255,174,.25);
+    }
+
+    .role {
+      font-family: monospace;
+      font-size: 18px;
+      color: #b9fff0;
+      margin-bottom: 22px;
+    }
+
+    .role::before {
+      content: "> ";
+      color: #00ffae;
+    }
+
+    .description {
+      max-width: 620px;
+      color: #91aaa2;
+      line-height: 1.8;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .primary {
+      background: #00ffae;
+      color: #00130d;
+      box-shadow: 0 0 25px rgba(0,255,174,.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(0,255,174,.55);
+    }
+
+    .secondary {
+      color: #00ffae;
+      border: 1px solid rgba(0,255,174,.45);
+    }
+
+    .secondary:hover {
+      background: rgba(0,255,174,.08);
+    }
+
+    /* Eye section */
+    .hero-right {
+      width: 45%;
+      min-height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .eye-container {
+      width: min(470px, 90%);
+      aspect-ratio: 1 / .72;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .eye-container::before {
+      content: "";
+      position: absolute;
+      width: 85%;
+      height: 75%;
+      border-radius: 50%;
+      border: 1px solid rgba(0,255,174,.35);
+      box-shadow:
+        0 0 25px rgba(0,255,174,.15),
+        inset 0 0 35px rgba(0,255,174,.08);
+      transform: rotate(-8deg);
+    }
+
+    .eye {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center,
+          #001b13 0 15%,
+          #00ffae 16% 25%,
+          #043c2c 26% 45%,
+          #00b982 46% 50%,
+          #02130e 51% 100%);
+      box-shadow:
+        0 0 20px #00ffae,
+        0 0 60px rgba(0,255,174,.45);
+      position: relative;
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    .eye::after {
+      content: "010101  CODE  101001  CYBER  01010";
+      position: absolute;
+      width: 420px;
+      left: -150px;
+      top: 50%;
+      color: rgba(0,255,174,.45);
+      font: 10px monospace;
+      letter-spacing: 3px;
+      white-space: nowrap;
+      transform: rotate(-8deg);
+    }
+
+    .scanline {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: rgba(0,255,174,.65);
+      box-shadow: 0 0 10px #00ffae;
+      animation: scan 4s linear infinite;
+    }
+
+    .code {
+      position: absolute;
+      color: rgba(0,255,174,.35);
+      font: 10px monospace;
+      line-height: 1.7;
+      white-space: pre;
+    }
+
+    .code.one {
+      left: 0;
+      top: 15%;
+    }
+
+    .code.two {
+      right: 0;
+      bottom: 15%;
+      text-align: right;
+    }
+
+    .quote {
+      position: absolute;
+      bottom: 10px;
+      right: 5%;
+      color: #7e9991;
+      font: 12px monospace;
+    }
+
+    .quote span {
+      color: #00ffae;
+    }
+
+    /* Socials */
+    .socials {
+      margin-top: 28px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0,255,174,.25);
+      border-radius: 50%;
+      color: #00ffae;
+      text-decoration: none;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .socials a:hover {
+      background: #00ffae;
+      color: #00130d;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(0,255,174,.5);
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0%,100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px #00ffae, 0 0 60px rgba(0,255,174,.4);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 35px #00ffae, 0 0 90px rgba(0,255,174,.55);
+      }
+    }
+
+    @keyframes scan {
+      0% { top: 5%; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 95%; opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 850px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 5%;
+      }
+
+      .hero-left,
+      .hero-right {
+        width: 100%;
+      }
+
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .description {
+        max-width: 90%;
+      }
+
+      .hero-right {
+        min-height: 350px;
+      }
+
+      .quote {
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
+      }
+
+      .socials {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">&lt;SY/&gt;</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="badge">Learning Never Stops</div>
+  </nav>
+
+  <!-- FIRST PAGE -->
+  <main class="hero" id="home">
+
+    <section class="hero-left">
+
+      <div class="hello">&gt; Hello, I am</div>
+
+      <h1>
+        <span>Sanjida</span><br>
+        Yeasmin
+      </h1>
+
+      <div class="role">Cybersecurity Enthusiast</div>
+
+      <p class="description">
+        Exploring cybersecurity, ethical hacking and technology.
+        Building my skills step by step with curiosity, patience
+        and a passion for learning.
+      </p>
+
+      <div class="buttons">
+        <a href="#about" class="btn primary">
+          Explore My Portfolio →
+        </a>
+
+        <a href="#contact" class="btn secondary">
+          Contact Me
+        </a>
+      </div>
+
+      <div class="socials">
+        <a href="#" title="GitHub">GH</a>
+        <a href="#" title="LinkedIn">in</a>
+        <a href="mailto:sanjidayesmin6095@gmail.com" title="Email">@</a>
+      </div>
+
+    </section>
+
+    <!-- EYE / CODE -->
+    <section class="hero-right">
+
+      <div class="eye-container">
+
+        <div class="code one">
+          &lt;system.online&gt;<br>
+          initializing...<br>
+          security_mode: ON<br>
+          access: learning<br>
+          encrypted_data...<br>
+          010101010101
+        </div>
+
+        <div class="eye"></div>
+
+        <div class="scanline"></div>
+
+        <div class="code two">
+          CYBERSECURITY<br>
+          ETHICAL_HACKING<br>
+          PYTHON<br>
+          LEARNING...<br>
+          101010101
+        </div>
+
+      </div>
+
+      <div class="quote">
+        &lt;/&gt; <span>Trust Allah's plan with patience</span> _
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
