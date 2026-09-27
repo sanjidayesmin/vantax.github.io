@@ -1,617 +1,566 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sanjida Yeasmin | Cybersecurity</title>
+<title>Sanjida Yeasmin | Cybersecurity</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+body{
+    background:#020708;
+    color:#eaffff;
+    font-family:"Courier New", monospace;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:rgba(0,8,9,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #075454;
+}
+
+.logo{
+    color:#00ffd5;
+    font-size:30px;
+    font-weight:bold;
+    text-shadow:0 0 15px #00ffd5;
+}
+
+nav a{
+    color:#d5eeee;
+    text-decoration:none;
+    margin:0 14px;
+    font-size:16px;
+}
+
+nav a:hover{
+    color:#00ffd5;
+}
+
+.status{
+    color:#00ffd5;
+    border:1px solid #008f7a;
+    padding:7px 14px;
+    border-radius:20px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:100px 6%;
+}
+
+/* YOUR UPLOADED IMAGE */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:url("cyber-eye.png");
+    background-size:cover;
+    background-position:center;
+
+    z-index:0;
+}
+
+/* DARK OVERLAY */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,5,6,.15),
+        rgba(0,5,6,.05),
+        rgba(0,5,6,.25)
+    );
+
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:600px;
+}
+
+.hello{
+    color:#00ffd5;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-family:Arial,sans-serif;
+    font-size:clamp(55px,8vw,100px);
+    line-height:.95;
+    color:white;
+}
+
+h1 span{
+    display:block;
+    color:#00ffd5;
+    text-shadow:0 0 25px #00ffd5;
+}
+
+.role{
+    color:#70fff0;
+    font-size:25px;
+    font-weight:bold;
+    margin-top:30px;
+}
+
+.description{
+    color:#e4f7f7;
+    font-size:18px;
+    margin-top:20px;
+    max-width:520px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 25px;
+    border:2px solid #00ffd5;
+    color:#00ffd5;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#00ffd5;
+    color:#001010;
+    box-shadow:0 0 30px #00ffd5;
+}
+
+/* ================= SECTIONS ================= */
+
+section:not(.hero){
+    padding:100px 8%;
+    border-top:1px solid #073f40;
+    background:#030a0b;
+}
+
+.title{
+    color:#00ffd5;
+    font-size:35px;
+    margin-bottom:35px;
+}
+
+.about{
+    max-width:900px;
+    color:#c7dada;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#061011;
+    border:1px solid #10494a;
+    padding:28px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#00ffd5;
+    box-shadow:0 0 25px rgba(0,255,213,.15);
+}
+
+.card h3{
+    color:#00ffd5;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#b9cccc;
+    line-height:1.7;
+}
+
+/* ================= SKILLS ================= */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.skill{
+    color:#8ffff0;
+    border:1px solid #009b86;
+    padding:11px 18px;
+    border-radius:25px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact a{
+    color:#00ffd5;
+    text-decoration:none;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#6d9999;
+    border-top:1px solid #073f40;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    nav{
+        height:auto;
+        padding:15px;
     }
 
-    html {
-      scroll-behavior: smooth;
+    nav .links{
+        display:none;
     }
 
-    body {
-      background: #020607;
-      color: white;
-      font-family: "Fira Code", monospace;
-      overflow-x: hidden;
+    .status{
+        font-size:11px;
     }
 
-    /* ================= NAVBAR ================= */
-
-    nav {
-      height: 102px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4.5%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-
-      background: rgba(1, 7, 8, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 255, 220, 0.25);
+    .hero{
+        padding:120px 6% 70px;
     }
 
-    .logo {
-      color: #00ffe0;
-      font-family: "Orbitron", sans-serif;
-      font-size: 34px;
-      font-weight: 800;
-      text-shadow: 0 0 15px #00ffe0;
+    h1{
+        font-size:55px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 42px;
-      list-style: none;
+    .role{
+        font-size:20px;
     }
-
-    .nav-links a {
-      color: #c5d4d9;
-      text-decoration: none;
-      font-size: 18px;
-      transition: 0.3s;
-      position: relative;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #00ffe0;
-      text-shadow: 0 0 12px #00ffe0;
-    }
-
-    .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      width: 45px;
-      height: 3px;
-      background: #00ffe0;
-      left: 0;
-      bottom: -30px;
-      box-shadow: 0 0 10px #00ffe0;
-    }
-
-    .status {
-      border: 1px solid #00a98f;
-      border-radius: 25px;
-      padding: 9px 18px;
-      color: #00ffe0;
-      font-size: 14px;
-      box-shadow: 0 0 12px rgba(0,255,220,.15);
-    }
-
-    .status span {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      background: #00ffe0;
-      border-radius: 50%;
-      margin-right: 9px;
-      box-shadow: 0 0 10px #00ffe0;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: 130px 6% 60px;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(1,8,9,.98) 0%,
-          rgba(1,8,9,.88) 33%,
-          rgba(1,8,9,.48) 58%,
-          rgba(1,8,9,.15) 100%
-        ),
-        url("cyber-eye.png");
-
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-
-      background:
-        linear-gradient(
-          180deg,
-          transparent 75%,
-          rgba(0,255,220,.08)
-        );
-    }
-
-    .content {
-      position: relative;
-      z-index: 5;
-      max-width: 650px;
-    }
-
-    .hello {
-      color: #00ffe0;
-      font-size: 25px;
-      margin-bottom: 25px;
-      text-shadow: 0 0 12px rgba(0,255,220,.5);
-    }
-
-    .hello::before {
-      content: "> ";
-    }
-
-    h1 {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(60px, 8vw, 110px);
-      line-height: .98;
-      letter-spacing: -4px;
-      margin-bottom: 35px;
-    }
-
-    h1 .first {
-      color: #f5f8f9;
-      display: block;
-      text-shadow: 0 0 25px rgba(255,255,255,.15);
-    }
-
-    h1 .last {
-      color: #00ffe0;
-      display: block;
-      text-shadow:
-        0 0 10px #00ffe0,
-        0 0 25px rgba(0,255,220,.55);
-    }
-
-    .typing {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #9ffdf0;
-      font-size: 27px;
-      font-weight: 600;
-      margin-bottom: 35px;
-    }
-
-    .cursor {
-      width: 5px;
-      height: 32px;
-      background: #00ffe0;
-      box-shadow: 0 0 12px #00ffe0;
-      animation: blink .8s infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
-    .description {
-      color: #d0e0e5;
-      font-size: 18px;
-      line-height: 1.9;
-      max-width: 540px;
-      margin-bottom: 45px;
-    }
-
-    /* ================= BUTTON ================= */
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      color: #00ffe0;
-      border: 2px solid #00ffe0;
-      padding: 18px 42px;
-      font-size: 18px;
-      font-weight: 600;
-      position: relative;
-      transition: .3s;
-      box-shadow:
-        0 0 10px rgba(0,255,220,.2),
-        inset 0 0 10px rgba(0,255,220,.05);
-    }
-
-    .btn:hover {
-      color: #00110f;
-      background: #00ffe0;
-      box-shadow:
-        0 0 20px #00ffe0,
-        0 0 50px rgba(0,255,220,.4);
-      transform: translateY(-3px);
-    }
-
-    /* ================= SOCIAL ================= */
-
-    .social {
-      display: flex;
-      gap: 18px;
-      margin-top: 48px;
-    }
-
-    .social a {
-      width: 56px;
-      height: 56px;
-      border: 1px solid #00bda7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #00ffe0;
-      text-decoration: none;
-      font-size: 18px;
-      transition: .3s;
-    }
-
-    .social a:hover {
-      background: #00ffe0;
-      color: #00110f;
-      box-shadow: 0 0 25px #00ffe0;
-      transform: translateY(-5px);
-    }
-
-    /* ================= CODE DECORATION ================= */
-
-    .code-note {
-      position: absolute;
-      right: 7%;
-      bottom: 16%;
-      color: #75d9e5;
-      font-size: 15px;
-      line-height: 1.7;
-      z-index: 5;
-      text-shadow: 0 0 8px rgba(0,255,255,.4);
-    }
-
-    /* ================= BOTTOM TERMINAL ================= */
-
-    .terminal-bar {
-      position: absolute;
-      bottom: 25px;
-      left: 13%;
-      width: 40%;
-      min-width: 400px;
-
-      border: 1px solid rgba(0,255,220,.45);
-      padding: 15px 25px;
-
-      color: #00ffe0;
-      background: rgba(0,20,20,.45);
-      box-shadow: 0 0 15px rgba(0,255,220,.08);
-
-      z-index: 10;
-    }
-
-    /* ================= SECTIONS ================= */
-
-    section:not(.hero) {
-      min-height: 100vh;
-      padding: 120px 8%;
-      background: #020607;
-      border-top: 1px solid rgba(0,255,220,.12);
-    }
-
-    .section-title {
-      color: #00ffe0;
-      font-family: "Orbitron", sans-serif;
-      font-size: 42px;
-      margin-bottom: 35px;
-      text-shadow: 0 0 15px rgba(0,255,220,.5);
-    }
-
-    .section-text {
-      max-width: 800px;
-      color: #c6d6da;
-      line-height: 2;
-      font-size: 17px;
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width: 900px) {
-
-      nav {
-        padding: 0 20px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .status {
-        font-size: 11px;
-      }
-
-      .hero {
-        padding: 140px 25px 80px;
-        background-position: 65% center;
-      }
-
-      .content {
-        max-width: 100%;
-      }
-
-      h1 {
-        font-size: clamp(55px, 15vw, 85px);
-      }
-
-      .typing {
-        font-size: 21px;
-      }
-
-      .description {
-        font-size: 15px;
-      }
-
-      .code-note {
-        display: none;
-      }
-
-      .terminal-bar {
-        left: 25px;
-        width: calc(100% - 50px);
-        min-width: 0;
-        font-size: 11px;
-      }
-    }
-
-    @media (max-width: 500px) {
-
-      .logo {
-        font-size: 25px;
-      }
-
-      .status {
-        display: none;
-      }
-
-      .hello {
-        font-size: 19px;
-      }
-
-      h1 {
-        font-size: 54px;
-      }
-
-      .typing {
-        font-size: 17px;
-      }
-
-      .description {
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .social a {
-        width: 48px;
-        height: 48px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
 
-  <nav>
+<nav>
 
-    <div class="logo">
-      &lt;SY/&gt;
+    <div class="logo">&lt;SY/&gt;</div>
+
+    <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
     </div>
-
-    <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
 
     <div class="status">
-      <span></span>
-      Learning Never Stops
+        ● Learning Never Stops
     </div>
 
-  </nav>
+</nav>
 
 
-  <!-- ================= HOME ================= -->
+<!-- ================= HOME ================= -->
 
-  <section class="hero" id="home">
+<section class="hero" id="home">
 
-    <div class="content">
+    <div class="hero-content">
 
-      <div class="hello">
-        Hello, I am
-      </div>
+        <div class="hello">
+            &gt; Hello, I am
+        </div>
 
-      <h1>
-        <span class="first">Sanjida</span>
-        <span class="last">Yeasmin</span>
-      </h1>
+        <h1>
+            Sanjida
+            <span>Yeasmin</span>
+        </h1>
 
-      <div class="typing">
-        Cybersecurity Enthusiast
-        <span class="cursor"></span>
-      </div>
+        <div class="role">
+            Cybersecurity Enthusiast |
+        </div>
 
-      <p class="description">
-        Exploring the digital world, learning cybersecurity,
-        and building a safer tomorrow — one skill at a time.
-      </p>
+        <p class="description">
+            Exploring the digital world, learning cybersecurity,
+            programming and AI, and building a safer tomorrow —
+            one skill at a time.
+        </p>
 
-      <a href="#about" class="btn">
-        &gt; Explore My Portfolio &nbsp; →
-      </a>
-
-
-      <div class="social">
-
-        <a href="#" title="GitHub">
-          ◉
+        <a href="#about" class="button">
+            &gt; Explore My Portfolio →
         </a>
-
-        <a href="#" title="LinkedIn">
-          in
-        </a>
-
-        <a href="#" title="Email">
-          ✉
-        </a>
-
-        <a href="#" title="Website">
-          ◎
-        </a>
-
-      </div>
 
     </div>
 
+</section>
 
-    <!-- RIGHT SIDE CODE -->
 
-    <div class="code-note">
-      // small steps<br>
-      // big dreams<br>
-      // InshaAllah<br>
-      _
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <h2 class="title">
+        &gt; About Me
+    </h2>
+
+    <p class="about">
+
+        I am <strong>Sanjida Yeasmin</strong>, a technology enthusiast
+        currently learning <strong>Cybersecurity and Ethical Hacking</strong>.
+        I am also exploring programming, Artificial Intelligence and
+        modern technology.
+
+        <br><br>
+
+        I enjoy learning new skills, solving problems, communication,
+        teamwork and building practical knowledge step by step.
+
+    </p>
+
+</section>
+
+
+<!-- ================= IDENTITY ================= -->
+
+<section>
+
+    <h2 class="title">
+        &gt; My Identity
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Cybersecurity Learner</h3>
+            <p>
+                Learning cybersecurity, ethical hacking and
+                practical security concepts.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Technology Enthusiast</h3>
+            <p>
+                Interested in technology, programming,
+                AI and automation.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Creative Learner</h3>
+            <p>
+                Basic experience with video editing and
+                digital creative work.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Team & Communication</h3>
+            <p>
+                Interested in communication, teamwork and
+                continuous personal development.
+            </p>
+        </div>
+
     </div>
 
+</section>
 
-    <!-- BOTTOM TERMINAL -->
 
-    <div class="terminal-bar">
-      &lt;/&gt; Trust Allah’s plan with patience _
+<!-- ================= SKILLS ================= -->
+
+<section id="skills">
+
+    <h2 class="title">
+        &gt; Skills & Learning
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill">Cybersecurity</div>
+        <div class="skill">Ethical Hacking</div>
+        <div class="skill">Python</div>
+        <div class="skill">Programming</div>
+        <div class="skill">Artificial Intelligence</div>
+        <div class="skill">Technology</div>
+        <div class="skill">Communication</div>
+        <div class="skill">Teamwork</div>
+        <div class="skill">Video Editing</div>
+
     </div>
 
-  </section>
+</section>
 
 
-  <!-- ================= ABOUT ================= -->
+<!-- ================= EDUCATION ================= -->
 
-  <section id="about">
+<section id="education">
 
-    <h2 class="section-title">
-      &gt; About Me
+    <h2 class="title">
+        &gt; Education
     </h2>
 
-    <p class="section-text">
-      I am Sanjida Yeasmin, a cybersecurity enthusiast
-      exploring technology, programming and the digital world.
-      I am continuously learning new skills and working toward
-      building a strong future in cybersecurity and technology.
-    </p>
+    <div class="cards">
 
-  </section>
+        <div class="card">
+
+            <h3>HSC — 2025</h3>
+
+            <p>
+                Cumilla Government Women's College
+            </p>
+
+        </div>
 
 
-  <!-- ================= SKILLS ================= -->
+        <div class="card">
 
-  <section id="skills">
+            <h3>Programming Achievement</h3>
 
-    <h2 class="section-title">
-      &gt; Skills
+            <p>
+                Selected in Cumilla Programming Olympiad 2022.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GOALS ================= -->
+
+<section>
+
+    <h2 class="title">
+        &gt; Future Goals
     </h2>
 
-    <p class="section-text">
-      Cybersecurity • Ethical Hacking • Python • Linux •
-      Networking • Web Development • Problem Solving
+    <p class="about">
+
+        My goal is to build strong skills in cybersecurity,
+        programming and artificial intelligence and eventually
+        work on meaningful technology projects.
+
+        <br><br>
+
+        <strong style="color:#00ffd5;">
+            Small steps. Big dreams. InshaAllah.
+        </strong>
+
     </p>
 
-  </section>
+</section>
 
 
-  <!-- ================= PROJECTS ================= -->
+<!-- ================= CONTACT ================= -->
 
-  <section id="projects">
+<section id="contact">
 
-    <h2 class="section-title">
-      &gt; Projects
+    <h2 class="title">
+        &gt; Contact
     </h2>
 
-    <p class="section-text">
-      Cybersecurity labs, programming projects,
-      web projects and future security research.
-    </p>
+    <div class="cards">
 
-  </section>
+        <div class="card">
 
+            <h3>Email</h3>
 
-  <!-- ================= CONTACT ================= -->
+            <p>
+                <a href="mailto:sanjidayesmin6095@gmail.com">
+                    sanjidayesmin6095@gmail.com
+                </a>
+            </p>
 
-  <section id="contact">
-
-    <h2 class="section-title">
-      &gt; Contact
-    </h2>
-
-    <p class="section-text">
-      Let's connect and build something meaningful
-      with technology.
-    </p>
-
-  </section>
+        </div>
 
 
-  <!-- ================= JAVASCRIPT ================= -->
+        <div class="card">
 
-  <script>
+            <h3>LinkedIn</h3>
 
-    // Navbar active link
+            <p>
+                <a href="https://linkedin.com/in/sanjida-yeasmin-36b901433"
+                   target="_blank">
+                    View LinkedIn
+                </a>
+            </p>
 
-    const links = document.querySelectorAll(".nav-links a");
-
-    links.forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        links.forEach(item => {
-          item.classList.remove("active");
-        });
-
-        link.classList.add("active");
-
-      });
-
-    });
+        </div>
 
 
-    // Small typing cursor effect
+        <div class="card">
 
-    const cursor = document.querySelector(".cursor");
+            <h3>Facebook</h3>
 
-    setInterval(() => {
-      cursor.style.opacity =
-        cursor.style.opacity === "0" ? "1" : "0";
-    }, 600);
+            <p>
+                <a href="https://www.facebook.com/profile.php?id=61574898345085"
+                   target="_blank">
+                    View Facebook
+                </a>
+            </p>
 
-  </script>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    &lt;/&gt; Trust Allah’s plan with patience _
+
+    <br><br>
+
+    © 2026 Sanjida Yeasmin
+
+</footer>
+
 
 </body>
 </html>
